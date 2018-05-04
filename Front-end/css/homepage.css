@@ -1,0 +1,20 @@
+.topbar {
+    display: inline;
+}
+.loginBtn {
+    position: absolute;
+    margin-left: 83.333333%;
+}
+.bgColor {
+    background-color: #a5b9ff;
+}
+.centerDet {
+    display: inline;
+    padding-left: 43%;
+    padding-top: 5%;
+    position: absolute;
+}
+.loginMessage {
+    padding-right: 5%;
+    padding-top: 5%
+}
