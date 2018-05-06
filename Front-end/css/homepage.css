@@ -12,9 +12,43 @@
     display: inline;
     padding-left: 43%;
     padding-top: 5%;
-    position: absolute;
 }
 .loginMessage {
     padding-right: 5%;
-    padding-top: 5%
+    padding-top: 5%;
+}
+
+.lista-item {
+    width: 11%;
+}
+
+#textOpt {
+
+}
+
+.listaOpt {
+    position: absolute;
+    width: 95%;
+    margin-top: 10%;
+    margin-left: 5%;
+}
+#regulament {
+    position: absolute;
+    left: 45%;
+    margin-top: 8%;
+}
+#optionalInfo2 {
+    position: absolute;
+    left: 45%;
+    margin-top: 8%;
+    display: none;
+}
+#optionalInfo3 {
+    position: absolute;
+    left: 45%;
+    margin-top: 8%;
+    display: none;
+}
+.sem {
+    float: left;
 }
