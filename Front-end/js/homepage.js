@@ -10,3 +10,9 @@ function showOptionals(year) {
         document.getElementById("regulament").style.display = "none";
     }
 }
+
+function adminPage() {
+    document.getElementById("modificaOpt").style.display = "block";
+    document.getElementById("vizStuds").style.display = "block";
+    document.getElementById("modifDistrib").style.display = "block";
+}

@@ -52,3 +52,12 @@
 .sem {
     float: left;
 }
+#modificaOpt {
+    display: none;
+}
+#vizStuds {
+    display: none;
+}
+#modifDistrib {
+    display: none;
+}

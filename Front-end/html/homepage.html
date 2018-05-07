@@ -10,7 +10,7 @@
 <body class="bgColor">
 <div class="topbar">
     <img src="../images/fii.png" alt="FII LOGO" width="130" height="100">
-    <button type="submit" class="btn btn-primary btn-lg loginBtn">Login</button>
+    <button type="submit" class="btn btn-primary btn-lg loginBtn" onclick="adminPage()">Login</button>
 </div>
 <h1 class="text-center">
     Bine ai venit!
@@ -22,6 +22,15 @@
         </li>
         <li class="lista-item">
             <a href="#" class="list-group-item list-group-item-action" onclick="showOptionals(3)">Lista optionale anul 3 </a>
+        </li>
+        <li class="lista-item" id="modificaOpt">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Modifica optionale </a>
+        </li>
+        <li class="lista-item" id="vizStuds">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Vizualizeaza lista studenti </a>
+        </li>
+        <li class="lista-item" id="modifDistrib">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Modifica distributia studentilor</a>
         </li>
     </ul>
 
