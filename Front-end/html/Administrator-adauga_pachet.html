@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=devide-width">
+	<meta name="template" content="template">
+	<title> template</title>
+	<link rel="stylesheet" type="text/css" href="../css/Administrator-adauga_pachet.css">
+</head>
+<body>
+	<header>
+		<div class="containerBrand">
+			<div id="branding">
+				<img src="../images/xwiki.png">
+			</div>
+		</div>
+	</header>
+
+
+
+
+    <section id="FII"> <!--Logo FII, aici mai trebuie adaugat butonul de login sau logout, in finctie de pagina-->
+    	<div class="LogoFII">
+    	    <img src="../images/fii.png">
+    	</div>
+    </section>
+
+    <section id="container"> <!--Containerul principal-->
+		<!-- Select field -->
+			<div class="select-field1">
+				<select id="select">
+					<option selected hidden>An</option>
+					<option>An 2</option>
+					<option>An 3</option>
+
+				</select>
+			</div>
+		<!-- close select field -->
+		<!-- Select field -->
+			<div class="select-field2">
+				<select id="select">
+					<option selected hidden>Semestru</option>
+					<option>Semestru 1</option>
+					<option>Semestru 2</option>
+
+				</select>
+			</div>
+		<!-- close select field -->
+	
+			<button class="accordion">Adauga Pachet</button>
+			<div class="aliniere">
+				<p id="pachet">Nume Pachet: <input type="text" placeholder=""></p>
+				<div class="select-field">
+					<p id="optionale">Numar de optionale:</p>
+					<select id="select_nr_optionale" name="select_nr_optionale">
+						<option selected hidden></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+				<?php
+				$n=$_POST['select_nr_optionale'];
+				echo $n;
+				?>
+
+				
+				
+				
+			<div id="O1">	
+				<p id="optional">Optional 1: <input type="text" placeholder=""></p>
+				<p id="locuri">Numar locuri: <input type="text" placeholder=""></p>
+				<p id="locuri">Materii departajare:</p>
+				<div class="select-field">
+					<p id="departajare">Materia 1:</p>
+					<select id="select">
+						<option selected hidden></option>
+						<option>OOP</option>
+						<option>FAI</option>
+						<option>SO</option>
+					</select>
+				</div>
+				<div class="select-field">
+					<p id="departajare">Procentaj:</p>
+					<select id="select">
+						<option selected hidden></option>
+						<option>10%</option>
+						<option>20%</option>
+						<option>30%</option>
+					</select>
+				</div>
+			</div>	
+			<div id="O2">
+				<p id="optional">Optional 2: <input type="text" placeholder=""></p>
+				<p id="locuri">Numar locuri: <input type="text" placeholder=""></p>
+				<p id="locuri">Materii departajare:</p>
+				<div class="select-field">
+					<p id="departajare">Materia 1:</p>
+					<select id="select">
+						<option selected hidden></option>
+						<option>OOP</option>
+						<option>FAI</option>
+						<option>SO</option>
+					</select>
+				</div>
+				<div class="select-field">
+					<p id="departajare">Procentaj:</p>
+					<select id="select">
+						<option selected hidden></option>
+						<option>10%</option>
+						<option>20%</option>
+						<option>30%</option>
+					</select>
+				</div>
+			</div>
+			<div id="O3">
+				<p id="optional">Optional 3: <input type="text" placeholder=""></p>
+				<p id="locuri">Numar locuri: <input type="text" placeholder=""></p>
+				<p id="locuri">Materii departajare:</p>
+				<div class="select-field">
+					<p id="departajare">Materia 1:</p>
+					<select id="select">
+						<option selected hidden></option>
+						<option>OOP</option>
+						<option>FAI</option>
+						<option>SO</option>
+					</select>
+				</div>
+				<div class="select-field">
+					<p id="departajare">Procentaj:</p>
+					<select id="select">
+						<option selected hidden></option>
+						<option>10%</option>
+						<option>20%</option>
+						<option>30%</option>
+					</select>
+				</div>
+			</div>
+				<div>
+					<button  type="submit">Submit<i class="nume_pachet"></i></button>
+				</div>
+			
+			
+			
+			
+			</div>
+			
+		
+
+			
+
+			
+<script>
+				var e = document.getElementById("select_nr_optionale");
+				var strUser = e.options[e.selectedIndex].text;
+				parent=document.getElementsByClassName("aliniere");
+				child2=document.getElementById("O2");
+				child3=document.getElementById("O3");
+				strUser=1;
+				if(strUser==1)
+					{parent.removeChild(child2);
+					parent.removeChild(child3);}
+					
+					</script>
+			
+			
+			
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var aliniere = this.nextElementSibling;
+        if (aliniere.style.display === "block") {
+            aliniere.style.display = "none";
+        } else {
+            aliniere.style.display = "block";
+        }
+    });
+}
+</script>
+    </section>
+
+
+
+
+    <footer>
+    	<dir class="containerUAIC">
+    		<dir id="logo">
+    		    <img src="../images/fii.png">
+    			<img src="../images/logo-retina1.png">
+    		</dir>
+    	</dir>
+    </footer>
+</body>
+</html>	
