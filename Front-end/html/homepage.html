@@ -6,16 +6,24 @@
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="../css/template.css">
 </head>
-<body class="bgColor">
+<body>
+<header>
+    <div class="containerBrand">
+        <div id="branding">
+            <img src="../images/xwiki.png">
+        </div>
+    </div>
+</header>
 <div class="topbar">
-    <img src="../images/fii.png" alt="FII LOGO" width="130" height="100">
     <button type="submit" class="btn btn-primary btn-lg loginBtn" onclick="adminPage()">Login</button>
 </div>
 <h1 class="text-center">
     Bine ai venit!
 </h1>
 <div id="trei" class="centerDet">
+
     <ul class="justify-content-center list-group listaOpt">
         <li class="lista-item">
             <a href="#" class="list-group-item list-group-item-action" onclick="showOptionals(2)">Lista optionale anul 2 </a>
@@ -34,6 +42,9 @@
         </li>
     </ul>
 
+</div>
+<div id="moreInfo">
+    <a href="https://www.info.uaic.ro/bin/Programs/Undergraduate" target="_blank">More info here</a>
 </div>
 
 <div id="regulament">
@@ -139,6 +150,14 @@
         </div>
     </div>
 </div>
+<footer>
+    <div class="containerUAIC">
+        <div id="logo">
+            <img src="../images/fii.png">
+            <img src="../images/logo-retina1.png">
+        </div>
+    </div>
+</footer>
 <script rel="javascript" src="../js/homepage.js"></script>
 </body>
 </html>
