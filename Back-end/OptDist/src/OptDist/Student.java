@@ -7,7 +7,8 @@ public class Student  {
     private String name;
     private String surname;
     private String group;
-    public float grade;
+    private float grade;
+    private int year;
     private Preference preference;
 
     public Student(String nrMatricol, String name, String surname, String group, float grade) {
@@ -45,7 +46,11 @@ public class Student  {
 
     public void setPreference (Preference newPreference)
     {
+        this.preference=newPreference;
+    }
 
+    public int getYear() {
+        return year;
     }
 }
 
