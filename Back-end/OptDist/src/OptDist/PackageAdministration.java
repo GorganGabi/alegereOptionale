@@ -17,4 +17,8 @@ public class PackageAdministration {
     private void addPackage (Package newPackage){
         packageList.add(newPackage);
     }
+
+    private List<Package> getPackageList(){
+        return packageList;
+    }
 }
