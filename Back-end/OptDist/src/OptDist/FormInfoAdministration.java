@@ -10,7 +10,7 @@ public class FormInfoAdministration {
 		for( Student i : students.studList ) {
 			FormInfo form = new FormInfo();
 			
-			for( Package j : packages. ) {
+			for( Package j : packages.getPackageList() ) {
 				if( i.getYear() + 1 == j.getYear() )
 					form.packages.add(j);
 			}
