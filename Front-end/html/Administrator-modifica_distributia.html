@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=devide-width">
+	<meta name="template" content="template">
+	<title> template</title>
+	<link rel="stylesheet" type="text/css" href="Administrator-modifica_distributia.css">
+</head>
+<body>
+	<header>
+		<div class="containerBrand">
+			<div id="branding">
+				<img src="xwiki.png">
+			</div>
+		</div>
+	</header>
+
+
+
+
+    <section id="FII"> <!--Logo FII, aici mai trebuie adaugat butonul de login sau logout, in finctie de pagina-->
+    	<div class="LogoFII">
+    	    <img src="fii.png">
+    	</div>
+    </section>
+	
+    <section id="container"> <!--Containerul principal-->
+    	    
+    	    
+		<section>
+			<button class="accordion">Elimină student</button>
+			<div class="aliniere">
+				<p id="pachet">Nume utilizator: <input type="text" placeholder=""></p>
+	
+					<button  type="submit">Update</button>
+				
+			</div>
+		<script>
+             var accc = document.getElementsByClassName("accordion");
+             var j;
+
+            for (j = 0; j < acc.length; j++) {
+                 accc[j].addEventListener("click", function() {
+                 this.classList.toggle("active");
+                 var aliniere = this.nextElementSibling;
+                   if (aliniere.style.display === "block") {
+                      aliniere.style.display = "none";
+                    } else {
+                      aliniere.style.display = "block";
+                           }
+                });
+            }
+        </script>
+		</section>
+		
+		
+		<section>
+		<button class="accordion">Adaugă student</button>
+			<div class="aliniere">
+				<p id="pachet">Nume utilizator: <input type="text" placeholder=""></p>
+				   <div class="select-field">
+					   <p id="departajare">Pachet:</p>
+					   <select id="select">
+						   <option selected hidden></option>
+						   <option>Pachet 1</option>
+						   <option>Pachet 2</option>
+						   <option>Pachet 3</option>
+					   </select>
+				   </div>
+				   <div class="select-field">
+					    <p id="departajare">Optional:</p>
+					    <select id="select">
+						    <option selected hidden></option>
+						    <option>Optional 1</option>
+						    <option>Optional 2</option>
+						    <option>Optional 3</option>
+					    </select>
+				   </div>
+	
+					<button  type="submit" >Update<i id="update"></i></button>
+				
+			</div>
+		<script>
+             var acc = document.getElementsByClassName("accordion");
+             var i;
+
+            for (i = 0; i < acc.length; i++) {
+                 acc[i].addEventListener("click", function() {
+                 this.classList.toggle("active");
+                 var aliniere = this.nextElementSibling;
+                   if (aliniere.style.display === "block") {
+                      aliniere.style.display = "none";
+                    } else {
+                      aliniere.style.display = "block";
+                           }
+                });
+}
+        </script>
+		</section>
+		
+		
+		
+		
+		
+    </section>	
+			
+			
+			
+			
+			
+			
+           
+    </section>
+
+
+
+
+    <footer>
+    	<dir class="containerUAIC">
+
+    		    <p> &copy; 2018 FII</p>
+    	</dir>
+    </footer>
+</body>
+</html>	
