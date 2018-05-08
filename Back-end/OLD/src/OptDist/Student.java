@@ -6,6 +6,7 @@ public abstract class Student {
     private String surname;
     private String group;
     private float grade;
+    
 
     public Student(String nrMatricol, String name, String surname, String group, float grade) {
         this.nrMatricol = nrMatricol;

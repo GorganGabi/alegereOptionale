@@ -8,6 +8,7 @@ public abstract class Student {
     private String surname;
     private String group;
     private float grade;
+    private Preference preference;
 
     public Student(String nrMatricol, String name, String surname, String group, float grade) {
         this.nrMatricol = nrMatricol;
@@ -17,30 +18,18 @@ public abstract class Student {
         this.grade = grade;
     }
     
-    /**
-     * @return the registration number of the student
-     */
+
     abstract public String getNrMatricol();
 
-    /**
-     * @return the name of the student
-     */
     abstract public String getName();
 
-    /**
-     * @return the surname of the student
-     */
     abstract public String getSurname();
 
-    /**
-     * @return the group of the student
-     */
     abstract public String getGroup();
 
-    /**
-     * @return the grade of the student
-     */
     abstract public float getGrade();
+    
+    abstract public void setPreference (Preference newPreference);
     
 }
 
