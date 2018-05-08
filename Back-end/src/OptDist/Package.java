@@ -7,31 +7,41 @@ public abstract class Package {
     private int year;
     private int semester;
     private String name;
+    private int ID;
     
-    public Package(List<Optional> optionals, int year, int semester, String name) {
+    public Package(List<Optional> optionals, int year, int semester, String name, int id) {
         this.optionals = optionals;
         this.year = year;
         this.semester = semester;
         this.name = name;
+        this.ID = id;
     }
     
     /**
      * @return the optional list (as List<Optionals>)
      */
-    abstract public List<Optional> getOptionals();
+    public List<Optional> getOptionals(){
+        return optionals;
+    }
 
     /**
      * @return the year of the package (as int)
      */
-    abstract public int getYear();
+    public int getYear(){
+        return year;
+    }
 
     /**
      * @return the semester of the package (as int)
      */
-    abstract public int getSemester();
+    public int getSemester(){
+        return semester;
+    }
 
     /**
      * @return the name of the package (as String)
      */
-    abstract public String getName();
+    public String getName(){
+        return name;
+    }
 }
