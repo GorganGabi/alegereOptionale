@@ -13,7 +13,7 @@ public class StudentAdministration {
     {
         
     }
-    void importStudents(data ExcelDump)
+    void importStudents(ExcelDump data)
     {
         
     }

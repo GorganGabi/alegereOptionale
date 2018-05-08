@@ -8,5 +8,8 @@ public class FormResponse {
     private String nrMatricol2;
     private Map<Integer, List<Integer>> prefs;
     
-    public void import(String nrMatricol);
+    void import(String nrMatricol)
+    {
+        
+    }
 }
