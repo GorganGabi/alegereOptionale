@@ -2,7 +2,7 @@
 package OptDist;
 
 
-public abstract class Student {
+public class Student {
     private String nrMatricol;
     private String name;
     private String surname;
@@ -19,17 +19,34 @@ public abstract class Student {
     }
     
 
-    abstract public String getNrMatricol();
+    public String getNrMatricol()
+    {
+        return nrMatricol;
+    }
 
-    abstract public String getName();
+    public String getName()
+    {
+        return name;
+    }
 
-    abstract public String getSurname();
+    public String getSurname()
+    {
+        return surname;
+    }
 
-    abstract public String getGroup();
-
-    abstract public float getGrade();
+    public String getGroup()
+    {
+        return group;
+    }
     
-    abstract public void setPreference (Preference newPreference);
-    
+    public float getGrade()
+    {
+        return grade;
+    }
+
+    public void setPreference (Preference newPreference)
+    {
+
+    }
 }
 
