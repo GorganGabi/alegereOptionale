@@ -17,7 +17,6 @@ public class Student  {
         this.group = group;
         this.grade = grade;
     }
-    
 
     public String getNrMatricol()
     {

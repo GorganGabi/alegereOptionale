@@ -21,6 +21,13 @@ public class StudentAdministration  {
     {
         studList.add(newStudent);
     }
+    
+    void addStudent(String nrMatricol, String name, String surname, String group, float grade)
+    {
+        Student newStudent = new Student(nrMatricol, name, surname, group, grade);
+        studList.add(newStudent);
+    }
+    
     void importStudents(ExcelDump data)
     {
         
