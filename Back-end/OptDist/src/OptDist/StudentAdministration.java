@@ -1,13 +1,14 @@
 
 package OptDist;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Comparator;
 import java.util.Collections;
 
 public class StudentAdministration  {
-    List<Student> studList;
+    ArrayList<Student> studList;
     void orderStudents()
     {
         Collections.sort(studList, new Comparator<Student>() {
@@ -24,8 +25,7 @@ public class StudentAdministration  {
     
     void addStudent(String nrMatricol, String name, String surname, String group, float grade)
     {
-        Student newStudent = new Student(nrMatricol, name, surname, group, grade);
-        studList.add(newStudent);
+        studList.add(new Student(nrMatricol, name, surname, group, grade));
     }
     
     void importStudents(ExcelDump data)
