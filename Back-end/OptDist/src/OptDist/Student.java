@@ -2,12 +2,12 @@
 package OptDist;
 
 
-public class Student {
+public class Student  {
     private String nrMatricol;
     private String name;
     private String surname;
     private String group;
-    private float grade;
+    public float grade;
     private Preference preference;
 
     public Student(String nrMatricol, String name, String surname, String group, float grade) {

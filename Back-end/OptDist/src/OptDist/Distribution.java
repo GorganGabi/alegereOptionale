@@ -18,14 +18,16 @@ public class Distribution {
     }
     void setAlgorithm(DistributionAlgorithm newAlgorithm)
     {
-        
+        this.algorithm = newAlgorithm;
     }
     Distribution(StudentAdministration newStudents)
     {
-        
+        this.students = newStudents;
     }
     Distribution(StudentAdministration newStudents, DistributionAlgorithm newAlgorithm)
     {
+        this.students = newStudents;
+        this.algorithm = newAlgorithm;
         
     }
 }
