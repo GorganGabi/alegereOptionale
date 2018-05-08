@@ -30,4 +30,12 @@ public class FormResponse {
         this.nrMatricol = "undefined";
         this.prefs = new HashMap<Integer, List<Integer>>();
     }
+
+    public String getNrMatricol() {
+        return nrMatricol;
+    }
+
+    public Map<Integer, List<Integer>> getPrefs() {
+        return prefs;
+    }
 }

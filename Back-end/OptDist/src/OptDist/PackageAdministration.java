@@ -10,15 +10,16 @@ public class PackageAdministration {
     public PackageAdministration(){
         packageList = new ArrayList<>();
     }
-    private void importPackages(ExcelDump data){
-
+    
+    public void importPackages(ExcelDump data){
+        System.out.println("[PackageAdministration] Excel imported!");
     }
 
-    private void addPackage (Package newPackage){
+    public void addPackage (Package newPackage){
         packageList.add(newPackage);
     }
 
-    private List<Package> getPackageList(){
+    public List<Package> getPackageList(){
         return packageList;
     }
 }
