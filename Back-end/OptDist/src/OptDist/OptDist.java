@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package class_implementation;
+package OptDist;
 
 /**
  *
  * @author gabih
  */
-public class Class_implementation {
+public class OptDist {
 
     /**
      * @param args the command line arguments
