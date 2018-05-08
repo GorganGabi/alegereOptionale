@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=devide-width">
 	<meta name="template" content="template">
 	<title> template</title>
-	<link rel="stylesheet" type="text/css" href="Administrator-modifica_distributia.css">
+	<link rel="stylesheet" type="text/css" href="../css/Administrator-modifica_distributia.css">
 </head>
 <body>
 	<header>
@@ -83,39 +83,25 @@
 				
 			</div>
 		<script>
-             var acc = document.getElementsByClassName("accordion");
-             var i;
+                         var acc = document.getElementsByClassName("accordion");
+                         var i;
 
-            for (i = 0; i < acc.length; i++) {
-                 acc[i].addEventListener("click", function() {
-                 this.classList.toggle("active");
-                 var aliniere = this.nextElementSibling;
-                   if (aliniere.style.display === "block") {
-                      aliniere.style.display = "none";
-                    } else {
-                      aliniere.style.display = "block";
-                           }
-                });
-}
-        </script>
-		</section>
-		
-		
-		
-		
-		
+                         for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function() {
+                            this.classList.toggle("active");
+                            var aliniere = this.nextElementSibling;
+                            if (aliniere.style.display === "block") {
+                                aliniere.style.display = "none";
+                                } 
+		            else {
+                                 aliniere.style.display = "block";
+                                }
+                              });
+                         }
+               </script>
+	</section>
+				
     </section>	
-			
-			
-			
-			
-			
-			
-           
-    </section>
-
-
-
 
     <footer>
     	<dir class="containerUAIC">
