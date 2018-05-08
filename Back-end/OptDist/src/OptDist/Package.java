@@ -3,7 +3,7 @@ package OptDist;
 
 import java.util.List;
 
-public abstract class Package {
+public class Package {
     private List<Optional> optionals;
     private int year;
     private int semester;
@@ -17,13 +17,28 @@ public abstract class Package {
         this.name = name;
     }
     
-    abstract public List<Optional> getOptionals();
+    public List<Optional> getOptionals()
+    {
+        return optionals;
+    }
 
-    abstract public int getYear();
+    public int getYear()
+    {
+        return year;
+    }
 
-    abstract public int getSemester();
+    public int getSemester()
+    {
+        return semester;
+    }
 
-    abstract public String getName();
+    public String getName()
+    {
+        return name;
+    }
     
-    abstract public String getID();
+    public int getID()
+    {
+        return ID;
+    }
 }

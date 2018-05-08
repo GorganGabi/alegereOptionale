@@ -1,17 +1,36 @@
 
 package OptDist;
 
-public abstract class Optional {
+public class Optional {
     String name;
     int year;
     int semester;
     int capacity;
     int ID;
     
-    abstract int GetCapacity();
-    abstract int GetYear();
-    abstract int GetSemester();
-    abstract String GetName();
-    abstract int getID();
+    int GetCapacity()
+    {
+        return capacity;
+    }
+    
+    int GetYear()
+    {
+        return year;
+    }
+    
+    int GetSemester()
+    {
+        return semester;
+    }
+    
+    String GetName()
+    {
+        return name;
+    }
+    
+    int getID()
+    {
+        return ID;
+    }
     
 }
