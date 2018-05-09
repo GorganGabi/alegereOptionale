@@ -3,7 +3,7 @@ package OptDist;
 import java.util.*;
 
 public class FormInfoAdministration {
-	List<FormInfo> forms;
+	private List<FormInfo> forms;
 	
 	void generateForms(StudentAdministration students, PackageAdministration packages) {
 		
@@ -12,7 +12,7 @@ public class FormInfoAdministration {
 			
 			for( Package j : packages.getPackageList() ) {
 				if( i.getYear() + 1 == j.getYear() )
-					form.packages.add(j);
+					form.getPackages().add(j);
 			}
 			
 			forms.add(form);
