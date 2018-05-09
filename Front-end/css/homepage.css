@@ -4,6 +4,7 @@
 .loginBtn {
     position: absolute;
     margin-left: 83.333333%;
+    display: flex;
 }
 .bgColor {
     background-color: #a5b9ff;
@@ -12,9 +13,164 @@
     display: inline;
     padding-left: 43%;
     padding-top: 5%;
-    position: absolute;
 }
 .loginMessage {
     padding-right: 5%;
-    padding-top: 5%
+    padding-top: 5%;
 }
+
+.lista-item {
+    width: 11%;
+}
+
+#textOpt {
+
+}
+
+.listaOpt {
+    position: absolute;
+    width: 95%;
+    margin-top: 10%;
+    margin-left: 5%;
+}
+#regulament {
+    position: absolute;
+    left: 35%;
+    margin-top: 8%;
+}
+#optionalInfo2 {
+    position: absolute;
+    left: 41%;
+    margin-top: 8%;
+    display: none;
+}
+#optionalInfo3 {
+    position: absolute;
+    left: 41%;
+    margin-top: 8%;
+    display: none;
+}
+.sem {
+    float: left;
+}
+#modificaOpt {
+    display: none;
+}
+#vizStuds {
+    display: none;
+}
+#modifDistrib {
+    display: none;
+}
+#moreInfo {
+    position: absolute;
+    left: 90%;
+    bottom: 25%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*template*/
+body {
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.containerBrand {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #4f74e3;
+    padding-top: 10px;
+    min-height: 10px;
+    border-bottom: #000000 3px solid;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding img {
+    width: 90px;
+}
+
+#FII {
+    border-bottom: #000000 3px solid;
+}
+
+#FII .LogoFII img {
+    width: 200px;
+    height: 70px;
+    display: inline;
+    padding-left: 103px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#container {
+    padding-left: 150px;
+    border-right: 2px solid #4f74e3;
+    border-left: 2px solid #4f74e3;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 10px;
+}
+
+footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:#6cf;
+}
+
+footer #logo {
+    padding-left: 43px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+

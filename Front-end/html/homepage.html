@@ -4,28 +4,161 @@
     <meta charset="UTF-8">
     <title>IP Alegere Optionale</title>
 
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/homepage.css">
 </head>
-<body class="bgColor">
+<body>
+<header>
+    <div class="containerBrand">
+        <div id="branding">
+            <img src="../images/xwiki.png">
+        </div>
+    </div>
+</header>
 <div class="topbar">
-    <img src="../images/fii.jpg" alt="FII LOGO" width="130" height="100">
-    <button class="btn-primary loginBtn">Login</button>
+    <a href="#">
+        <button type="submit" class="btn btn-primary btn-lg loginBtn" onclick="adminPage()">Login</button>
+    </a>
 </div>
-<h2 class="text-center">
+<h1 class="text-center">
     Bine ai venit!
-</h2>
-   <div class="centerDet">
-       <ul class="justify-content-center">
-           <li>
-               <a href="listaOptionale2">Lista optionale anul 2 </a>
-           </li>
-           <li>
-               <a href="listaOptionale3">Lista optionale anul 3 </a>
-           </li>
-       </ul>
+</h1>
+<div id="trei" class="centerDet">
 
-       <h5 class="loginMessage">Logheaza-te pentru a completa formularul cu optionale</h5>
-   </div>
+    <ul class="justify-content-center list-group listaOpt">
+        <li class="lista-item">
+            <a href="#" class="list-group-item list-group-item-action" onclick="showOptionals(2)">Lista optionale anul 2 </a>
+        </li>
+        <li class="lista-item">
+            <a href="#" class="list-group-item list-group-item-action" onclick="showOptionals(3)">Lista optionale anul 3 </a>
+        </li>
+        <li class="lista-item" id="modificaOpt">
+            <a href="Administrator-adauga_pachet.html" class="list-group-item list-group-item-action list-group-item-danger" target="_blank">Modifica optionale </a>
+        </li>
+        <li class="lista-item" id="vizStuds">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Vizualizeaza lista studenti </a>
+        </li>
+        <li class="lista-item" id="modifDistrib">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Modifica distributia studentilor</a>
+        </li>
+    </ul>
+
+</div>
+<div id="moreInfo">
+    <a href="https://www.info.uaic.ro/bin/Programs/Undergraduate" target="_blank">More info here</a>
+</div>
+
+<div id="regulament">
+    <ol class="list-group">
+        <li class="list-group-item list-group-item-success">1. Trebuie sa te loghezi pentru a putea completa formularul cu optionale.</li>
+        <li class="list-group-item list-group-item-success">2. Te rugam sa completezi toate optiunile, altfel poti fi repartizat aleator.</li>
+        <li class="list-group-item list-group-item-success">3. Repartizarea se va realiza in functie de numarul de credite si de optiunile alese de dumneavoastra</li>
+    </ol>
+</div>
+<div id="optionalInfo2">
+    <div class="sem">
+        <h4>Semestrul 1</h4>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Algoritmi genetici</h5>
+                </div>
+                <small>Titular curs: Mihaela Breaban</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">PLP</h5>
+                </div>
+                <small class="text-muted">Titular curs: Andrei Arusoaie</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">CDC</h5>
+                </div>
+                <small class="text-muted">Titular curs: ...</small>
+            </a>
+        </div>
+    </div>
+    <div class="sem">
+        <h4>Semestrul 2</h4>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Programare functionala</h5>
+                </div>
+                <small>Titular curs: Grigoras</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Matlab</h5>
+                </div>
+                <small class="text-muted">Titular curs: Iacob</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Introducere in criptografie</h5>
+                </div>
+                <small class="text-muted">Titular curs: Tiplea</small>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="optionalInfo3">
+    <div class="sem">
+        <h4>Semestrul 1</h4>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Optional 1</h5>
+                </div>
+                <small>Titular curs: Mihaela Breaban</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Optional 2</h5>
+                </div>
+                <small class="text-muted">Titular curs: Andrei Arusoaie</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Optional 3</h5>
+                </div>
+                <small class="text-muted">Titular curs: ...</small>
+            </a>
+        </div>
+    </div>
+    <div class="sem">
+        <h4>Semestrul 2</h4>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Optional 1</h5>
+                </div>
+                <small>Titular curs: Grigoras</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Optional 2</h5>
+                </div>
+                <small class="text-muted">Titular curs: Iacob</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Optional 3</h5>
+                </div>
+                <small class="text-muted">Titular curs: Tiplea</small>
+            </a>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="containerUAIC">
+        <div id="logo">
+            <img src="../images/fii.png">
+            <img src="../images/logo-retina1.png">
+        </div>
+    </div>
+</footer>
+<script rel="javascript" src="../js/homepage.js"></script>
 </body>
 </html>
