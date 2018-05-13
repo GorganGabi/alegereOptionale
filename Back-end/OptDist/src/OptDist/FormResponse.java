@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class FormResponse {
     private String nrMatricol;
-    private Map<Integer, List<Integer>> prefs;
+    private Map<Package, List<Optional>> prefs;
     
     void importfromDB(String nrMatricol)
     {
@@ -19,7 +19,7 @@ public class FormResponse {
         System.out.println("[FormResponse] exportToDB");
     }
     
-    public FormResponse(String newNrMatricol, Map<Integer, List<Integer>> newPrefs)
+    public FormResponse(String newNrMatricol, Map<Package, List<Optional>> newPrefs)
     {
         this.nrMatricol = newNrMatricol;
         this.prefs = newPrefs;
@@ -28,14 +28,14 @@ public class FormResponse {
     public FormResponse()
     {
         this.nrMatricol = "undefined";
-        this.prefs = new HashMap<Integer, List<Integer>>();
+        this.prefs = new HashMap<>();
     }
 
     public String getNrMatricol() {
         return nrMatricol;
     }
 
-    public Map<Integer, List<Integer>> getPrefs() {
+    public Map<Package, List<Optional>> getPrefs() {
         return prefs;
     }
 }

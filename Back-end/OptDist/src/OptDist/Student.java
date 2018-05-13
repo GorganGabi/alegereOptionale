@@ -52,5 +52,54 @@ public class Student  {
     public int getYear() {
         return year;
     }
+
+    /**
+     * @param nrMatricol the nrMatricol to set
+     */
+    public void setNrMatricol(String nrMatricol) {
+        this.nrMatricol = nrMatricol;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @param surname the surname to set
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    /**
+     * @param group the group to set
+     */
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    /**
+     * @param grade the grade to set
+     */
+    public void setGrade(float grade) {
+        this.grade = grade;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    /**
+     * @return the preference
+     */
+    public Preference getPreference() {
+        return preference;
+    }
 }
 
