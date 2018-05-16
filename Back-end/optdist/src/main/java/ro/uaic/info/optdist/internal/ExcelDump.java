@@ -1,33 +1,22 @@
-package ro.uaic.info.optdist.internal;
 
-import ro.uaic.info.optdist.*;
-
-import org.xwiki.component.annotation.Component;
+package OptDist;
 
 import java.util.Map;
 
-@Component
-public class ExcelDump implements ExcelDumpInterface {
+public class ExcelDump {
     
-    private Map<String,Map<String,String>> data;
+    private String[][] data;
+    private int nrOfRows, nrOfColumns;
     
-    @Override
-    public String get(String x,String y)
+    public String get(int x, int y)
     {
-        if (data.containsKey(x)) {
-            Map map = data.get(x);
-            
-            if (map.containsKey(y)) {
-                return (String) map.get(y);
-            }
-        }
-        
-        System.out.println(String.format("[ExcelDump] Could not find value for pair <%s, %s>!", x, y));
-        return null;
+        return data[x][y];
     }
     
-    public void ExcelDump(Map<String,Map<String,String>> newData)
+    public ExcelDump(int nrOfRows, int nrOfColumns, String[][] data)
     {
-        this.data = newData;
+        this.nrOfRows = nrOfRows;
+        this.nrOfColumns = nrOfColumns;
+        this.data = data;
     }
 }
