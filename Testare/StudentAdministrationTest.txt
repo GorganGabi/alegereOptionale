@@ -1,0 +1,71 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package test;
+
+import OptDist.Student;
+import OptDist.StudentAdministration;
+import java.util.ArrayList;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class StudentAdministrationTest {
+
+    public StudentAdministrationTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+    
+    //daca se introduce in lista de studenti un student fara nume, prenume etc
+    @Test
+    public void addStudentTest1() {
+        StudentAdministration instance = new StudentAdministration();
+        Student s = new Student(null,null,null,null,0);
+        instance.addStudent(s);    
+        
+    }
+    
+     //daca se introduce in lista de studenti un student cu nume, prenume etc care nu respecta formatul
+    @Test
+    public void addStudentTest2() {
+        StudentAdministration instance = new StudentAdministration();
+        Student s = new Student("  ","9835","a6fb",null,15);  //spatii in loc de nrmatr, cifre la nume, nota>10
+        instance.addStudent(s);
+        
+    }
+    
+    
+    //daca se introduce in lista de studenti un student fara nume, prenume etc
+    @Test
+    public void compareTest1() {
+        StudentAdministration instance = new StudentAdministration();
+        Student s1 = new Student("123aa","ana","popescu","A3",7);
+        Student s2 = new Student("123bb","alex","ionescu","B3",8);
+        float expectedResult = 8; //ma astept ca dupa comparare functia sa imi intoarca nota mai mare
+        float actualResult = instance.orderStudents().compare(s1, s2);  //!!! au declarat grade ca fiind float, dar functia lor returneaza int ->alt scenariu de test
+                                                                        // daca introduci o variabila de alt tip?
+        assertEquals(expectedResult, actualResult);     //compar rezultatele sa vad daca sunt egale, daca nu, pica testul
+        
+    }
+    
+}
