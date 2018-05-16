@@ -1,0 +1,15 @@
+ro.uaic.info.optdist.script.OptDistService
+ro.uaic.info.optdist.internal.DefaultHelloWorld
+ro.uaic.info.optdist.internal.Distribution
+ro.uaic.info.optdist.internal.DistributionAlgorithm
+ro.uaic.info.optdist.internal.ExcelDump
+ro.uaic.info.optdist.internal.ExcelParser
+ro.uaic.info.optdist.internal.FormInfo
+ro.uaic.info.optdist.internal.FormInfoAdministration
+ro.uaic.info.optdist.internal.FormResponse
+ro.uaic.info.optdist.internal.Optional
+ro.uaic.info.optdist.internal.Package
+ro.uaic.info.optdist.internal.PackageAdministration
+ro.uaic.info.optdist.internal.Preference
+ro.uaic.info.optdist.internal.Student
+ro.uaic.info.optdist.internal.StudentAdministration
