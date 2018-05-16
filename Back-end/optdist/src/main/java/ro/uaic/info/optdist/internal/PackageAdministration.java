@@ -13,7 +13,7 @@ public class PackageAdministration {
         packageList = new ArrayList<>();
     }
     
-    public void importPackages(ExcelDump data){
+    public void importPackages(String url){
         System.out.println("[PackageAdministration] Excel imported!");
     }
 
