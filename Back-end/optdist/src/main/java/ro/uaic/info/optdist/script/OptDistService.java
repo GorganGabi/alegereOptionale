@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import ro.uaic.info.optdist.internal.Distribution;
+import ro.uaic.info.optdist.internal.DistributionAlgorithm;
 import ro.uaic.info.optdist.internal.ExcelParser;
 import ro.uaic.info.optdist.internal.PackageAdministration;
 import ro.uaic.info.optdist.internal.Student;
@@ -37,14 +39,34 @@ public class OptDistService implements ScriptService {
     private PackageAdministration packages;
     private ExcelParser xcParser;
     
-    public void beginSubmissions () {
+    private Distribution distribution;
+    private DistributionAlgorithm algorithmDistribution;
+    
+    private boolean acceptSubmissions = false;
+    
+    public String beginSubmissions () {
         String studsExcelPath = "C:\\students.xls";
         String packagesUrl = "";
         students.importStudents(xcParser.parse(studsExcelPath));
         packages.importPackages(packagesUrl);
+        acceptSubmissions = true;
+        return "Succes!";
     }
     
-    public void submitForm (String nrMatricol) {
+    public String submitForm (String nrMatricol, String... preferences) {
+        if (!acceptSubmissions) {
+            return "Proces esuat. Perioada de submit a expirat.";
+        }
         
+        // TODO convert datele in preferinte
+        
+        // TODO inserat in BD
+        
+        return "Formular depus.";
+    }
+    
+    public void distribute () {
+        algorithmDistribution = new DistributionAlgorithm();
+        distribution = new Distribution(students);
     }
 }

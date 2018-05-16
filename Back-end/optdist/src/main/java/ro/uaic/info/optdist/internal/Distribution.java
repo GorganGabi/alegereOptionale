@@ -13,10 +13,21 @@ public class Distribution implements DistributionInterface {
     DistributionAlgorithm algorithm;
     Map<Student, List<Optional>> result;
     
-    @Override
-    public void export()
+    public Distribution(StudentAdministration newStudents)
     {
-        
+        this.students = newStudents;
+    }
+    
+    public Distribution(StudentAdministration newStudents, DistributionAlgorithm newAlgorithm)
+    {
+        this.students = newStudents;
+        this.algorithm = newAlgorithm;
+    }
+    
+    @Override
+    public Map<Student, List<Optional>> getResult()
+    {
+        return this.result;
     }
     
     @Override
@@ -29,17 +40,5 @@ public class Distribution implements DistributionInterface {
     public void setAlgorithm(DistributionAlgorithm newAlgorithm)
     {
         this.algorithm = newAlgorithm;
-    }
-    
-    Distribution(StudentAdministration newStudents)
-    {
-        this.students = newStudents;
-    }
-    
-    Distribution(StudentAdministration newStudents, DistributionAlgorithm newAlgorithm)
-    {
-        this.students = newStudents;
-        this.algorithm = newAlgorithm;
-        
     }
 }
