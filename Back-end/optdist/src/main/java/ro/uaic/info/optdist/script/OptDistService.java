@@ -35,10 +35,13 @@ public class OptDistService implements ScriptService {
     
     private StudentAdministration students;
     private PackageAdministration packages;
-    //private ExcelParser xcParser;
+    private ExcelParser xcParser;
     
     public void beginSubmissions () {
-        
+        String studsExcelPath = "C:\\students.xls";
+        String packagesUrl = "";
+        students.importStudents(xcParser.parse(studsExcelPath));
+        packages.importPackages(packagesUrl);
     }
     
     public void submitForm (String nrMatricol) {

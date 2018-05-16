@@ -9,7 +9,7 @@ import org.xwiki.component.annotation.Role;
 
 @Role
 public interface PackageAdministrationInterface {
-	public void importPackages(ExcelDump data);
+	public void importPackages(String url);
 	public void addPackage (Package newPackage);
 	public List<Package> getPackageList();
 }

@@ -15,9 +15,9 @@ import org.xwiki.component.annotation.Component;
 
 @Component
 public class ExcelParser {
-    /*
-    ExcelDump parse(String Path)
-    {
+    
+    public ExcelDump parse(String Path)
+    {   /*
         File fileHandle;
         FileInputStream inputStream;
         Workbook workbook;
@@ -60,5 +60,7 @@ public class ExcelParser {
             
         dump = new ExcelDump(nrOfRows, nrOfCells, parsedData);
         return dump;
-    }*/
+        */
+        return null;
+    }
 }
