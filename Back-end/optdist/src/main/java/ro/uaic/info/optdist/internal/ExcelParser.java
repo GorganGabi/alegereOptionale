@@ -10,9 +10,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import org.xwiki.component.annotation.Component;
+import ro.uaic.info.optdist.ExcelParserInterface;
 
 @Component
-public class ExcelParser {
+public class ExcelParser implements ExcelParserInterface{
     
     public ExcelDump parse(String Path)
     {   

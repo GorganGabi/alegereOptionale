@@ -4,5 +4,5 @@ import org.xwiki.component.annotation.Role;
 
 @Role
 public interface ExcelDumpInterface {
-	public String get(String x, String y);
+	public String get(int x, int y);
 }

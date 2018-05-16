@@ -1,9 +1,10 @@
 package ro.uaic.info.optdist.internal;
 
 import org.xwiki.component.annotation.Component;
+import ro.uaic.info.optdist.ExcelDumpInterface;
 
 @Component
-public class ExcelDump {
+public class ExcelDump implements ExcelDumpInterface{
     
     private String[][] data;
     private int nrOfRows, nrOfColumns;
