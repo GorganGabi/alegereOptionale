@@ -1,0 +1,4 @@
+{{velocity}}
+$services.OptDist.test_greet()
+$services.OptDist.test_student_creation()
+{{/velocity}}
