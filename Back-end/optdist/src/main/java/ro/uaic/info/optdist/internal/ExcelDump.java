@@ -1,8 +1,8 @@
+package ro.uaic.info.optdist.internal;
 
-package OptDist;
+import org.xwiki.component.annotation.Component;
 
-import java.util.Map;
-
+@Component
 public class ExcelDump {
     
     private String[][] data;
