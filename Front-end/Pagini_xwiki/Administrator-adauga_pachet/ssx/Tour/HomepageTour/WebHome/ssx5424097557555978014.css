@@ -1,0 +1,14 @@
+/*This code should be removed when https://jira.xwiki.org/browse/TOUR-36 is fixed*/
+/* In some places, the bootstrap-tour generates some unwanted results(same color for icons and the background of their wrapper container) 
+   and for now this hack will solve it. However this should be fixed ASAP in our Tour Application.
+*/
+/*START Workaround for TOUR-36*/
+/*Get colors from the current Color Theme*/
+
+#docextrapanes {
+  background-color: #FFFFFF;
+}
+ul.tour-step-backdrop.tour-tour_95_Tour_46_HomepageTour_46_WebHome-element {
+  background-color: #222222;
+}
+/*END*/
