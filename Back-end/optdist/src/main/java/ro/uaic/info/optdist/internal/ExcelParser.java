@@ -2,16 +2,20 @@ package ro.uaic.info.optdist.internal;
 
 import java.io.File;
 import java.io.FileInputStream;
+
+/*
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+*/
 
 import org.xwiki.component.annotation.Component;
 
 @Component
 public class ExcelParser {
+    /*
     ExcelDump parse(String Path)
     {
         File fileHandle;
@@ -56,5 +60,5 @@ public class ExcelParser {
             
         dump = new ExcelDump(nrOfRows, nrOfCells, parsedData);
         return dump;
-    }
+    }*/
 }

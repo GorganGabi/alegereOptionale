@@ -9,7 +9,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import ro.uaic.info.optdist.internal.ExcelParser;
+import ro.uaic.info.optdist.internal.PackageAdministration;
 import ro.uaic.info.optdist.internal.Student;
+import ro.uaic.info.optdist.internal.StudentAdministration;
 
 
 @Component
@@ -30,7 +33,9 @@ public class OptDistService implements ScriptService {
         return test_student.getNrMatricol();
     }
     
-    
+    private StudentAdministration students;
+    private PackageAdministration packages;
+    //private ExcelParser xcParser;
     
     public void beginSubmissions () {
         
