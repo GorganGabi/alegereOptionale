@@ -1,0 +1,60 @@
+#actionBox {
+  width: 13.4em;
+}
+
+#actionBox h1 {
+  margin: 0 0 .5em 0;
+}
+
+#actionBox ul {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+}
+
+#actionBox .action {
+  background: none no-repeat scroll 0 center transparent;
+  display: block;
+  font-size: .8em;
+  padding: .3em .3em .3em 20px;
+  text-transform: uppercase;
+}
+
+#actionBox .action.edit {
+  background-image: url("../../../resources/icons/silk/application_edit.png");
+}
+
+#actionBox .action.translate {
+  background-image: url("../../../attachment/xwiki/AppWithinMinutes/LiveTableViewSheet/locate.png");
+}
+
+#actionBox .action.delete {
+  background-image: url("../../../resources/icons/silk/application_delete.png");
+}
+
+#actionBox .action.deleteData {
+  background-image: url("../../../resources/icons/silk/application_form_delete.png");
+}
+
+#actionBox .action.add {
+  background-image: url("../../../resources/icons/silk/add.png");
+}
+
+#entryNamePopup {
+  margin-right: 20px;
+}
+
+#entryNamePopup input[type=text] {
+  width: 99%;
+}
+
+#entryNamePopup input[type=image] {
+  margin: .3em .5em;
+  padding: 0;
+  position: absolute;
+}
+
+.xwiki-livetable-container {
+  /* Make sure the live table doesn't overflow the action panel. */
+  clear: right;
+}
