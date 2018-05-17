@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 import ro.uaic.info.optdist.internal.Distribution;
 import ro.uaic.info.optdist.internal.DistributionAlgorithm;
 import ro.uaic.info.optdist.internal.ExcelParser;
+import ro.uaic.info.optdist.internal.Optional;
 import ro.uaic.info.optdist.internal.PackageAdministration;
 import ro.uaic.info.optdist.internal.Student;
 import ro.uaic.info.optdist.internal.StudentAdministration;
@@ -31,9 +32,17 @@ public class OptDistService implements ScriptService {
     private Student test_student;
     
     public String test_student_creation () {
-        this.test_student = new Student("192SL00777", "fernado", "armandoghedon", "a3", 1.9f);
+        this.test_student = new Student("192SL00777", "Vasile", "Vasilescu", "V3", 1.9f);
         return test_student.getNrMatricol();
     }
+    
+    private Optional test_optional;
+    
+    public String test_optional_creaiton () {
+        this.test_optional = new Optional("Programare Orientata Orizontal", 3, 2, 100, "CS1010101");
+        return this.test_optional.getName();
+    }
+    
     
     private StudentAdministration students;
     private PackageAdministration packages;

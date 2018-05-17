@@ -11,7 +11,8 @@ import java.util.Map;
 public class Distribution implements DistributionInterface {
     StudentAdministration students;
     DistributionAlgorithm algorithm;
-    Map<Student, List<Optional>> result;
+    Map<Student, List<Optional>>
+            result;
     
     public Distribution(StudentAdministration newStudents)
     {

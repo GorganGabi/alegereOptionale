@@ -4,9 +4,9 @@ import org.xwiki.component.annotation.Role;
 
 @Role
 public interface OptionalInterface {
-	int GetCapacity();
-	int GetYear();
-	int GetSemester();
-	String GetName();
-	int getID();
+	int getCapacity();
+	int getYear();
+	int getSemester();
+	String getName();
+	String getID();
 }

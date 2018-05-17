@@ -13,11 +13,13 @@ public class FormResponse implements FormResponseInterface {
     private String nrMatricol;
     private Map<Package, List<Optional>> prefs;
     
+    @Override
     public void importfromDB(String nrMatricol)
     {
         System.out.println("[FormResponse] importFromDB");
     }
     
+    @Override
     public void exportToDB()
     {
         System.out.println("[FormResponse] exportToDB");
@@ -35,10 +37,12 @@ public class FormResponse implements FormResponseInterface {
         this.prefs = new HashMap<>();
     }
 
+    @Override
     public String getNrMatricol() {
         return nrMatricol;
     }
 
+    @Override
     public Map<Package, List<Optional>> getPrefs() {
         return prefs;
     }

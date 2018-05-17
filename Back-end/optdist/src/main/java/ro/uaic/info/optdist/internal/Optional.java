@@ -11,10 +11,10 @@ public class Optional implements OptionalInterface {
     int semester;
     private int enrolledStudents;
     int capacity;
-    int ID;
+    String ID;
     float lastGrade;
    
-    public Optional(String name, int year, int semester, int capacity, int ID) {
+    public Optional(String name, int year, int semester, int capacity, String ID) {
         this.name = name;
         this.year = year;
         this.semester = semester;
@@ -23,27 +23,32 @@ public class Optional implements OptionalInterface {
         this.enrolledStudents = 0;
     }
     
-    int getCapacity()
+    @Override
+    public int getCapacity()
     {
         return capacity;
     }
     
-    int getYear()
+    @Override
+    public int getYear()
     {
         return year;
     }
     
-    int getSemester()
+    @Override
+    public int getSemester()
     {
         return semester;
     }
     
-    String getName()
+    @Override
+    public String getName()
     {
         return name;
     }
     
-    public int getID()
+    @Override
+    public String getID()
     {
         return ID;
     }
@@ -73,25 +78,4 @@ public class Optional implements OptionalInterface {
     void setCapacity(int i) { 
         this.capacity = i;
     }
-
-    @Override
-    public int GetCapacity() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int GetYear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int GetSemester() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String GetName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
