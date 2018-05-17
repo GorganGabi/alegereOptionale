@@ -51,19 +51,16 @@ public class OptDistService implements ScriptService {
     private Distribution distribution;
     private DistributionAlgorithm algorithmDistribution;
     
-    private boolean acceptSubmissions = false;
-    
     public String beginSubmissions () {
         String studsExcelPath = "C:\\students.xls";
         String packagesUrl = "";
         students.importStudents(xcParser.parse(studsExcelPath));
         packages.importPackages(packagesUrl);
-        acceptSubmissions = true;
         return "Succes!";
     }
     
     public String submitForm (String nrMatricol, String... preferences) {
-        if (!acceptSubmissions) {
+        if (!true) { // TODO verifica data
             return "Proces esuat. Perioada de submit a expirat.";
         }
         
@@ -76,10 +73,19 @@ public class OptDistService implements ScriptService {
     
     public void distribute () {
         algorithmDistribution = new DistributionAlgorithm();
-        distribution = new Distribution(students);
+        distribution = new Distribution(students, algorithmDistribution);
+        distribution.start();
     }
     
     public void exportDistribution () {
+        // TODO salveaza in BD rezultatul
+    }
+    
+    public void reset () {
+        // TODO verifica adminitate
         
+        this.students = null;
+        this.packages = null;
+        this.distribution = null;
     }
 }
