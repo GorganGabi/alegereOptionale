@@ -1,0 +1,191 @@
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                    
+
+.applicationsPanelMoreList {
+  margin-top: 1em;
+}
+
+.applicationsPanel li img {
+  float: left;
+  width: 16px;
+  height: 16px;
+}
+
+.panel-width-Medium .applicationsPanel li .application-img, 
+.panel-width-Large .applicationsPanel li .application-img {
+  display: block;
+  float: left;
+}
+
+.applicationsPanel li .application-label {
+  margin-left: 0.5em;
+}
+
+.applicationPanelMoreContainer ul {
+  margin-left: 5px;
+}
+
+.applicationPanelMoreContainer li a {
+  font-size: 90%;
+  line-height: 16px;
+}
+
+.panel-width-Small .panel.Applications {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.panel-width-Small .applicationsPanel li {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.panel-width-Small .applicationsPanel li a {
+  padding: 0.7em 0;
+}
+
+.panel-width-Small .applicationsPanel .application-label {
+  display: inline-block; /* Needed by IE for ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Needed by IE for ellipsis */
+}
+
+.panel-width-Small .applicationsPanel li img {
+  float: none;
+}
+
+.panel-width-Small .applicationsPanel li .application-img {
+  display: block;
+}
+
+.panel-width-Small .applicationsPanel li .application-label {
+  margin-left: 0;
+}
+
+.panel-width-Small .panel.Applications .xwikipaneltitle {
+  display: none;
+}
+
+.panel-width-Small .panel.Applications .xwikipanelcontents {
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+.panel-width-Small .applicationPanelMoreContainer ul {
+  padding: 0;
+  margin: 0;
+  background-color: #FFFFFF;
+}
+
+.panel-width-Small .applicationPanelMoreContainer ul li:hover {
+  background-color: #eeeeee;
+}
+
+.panel-width-Small .applicationPanelMoreContainer ul li:hover a {
+  color: #777777;
+}
+
+.panel-width-Small .application-img {
+  font-size: 24px;
+}
+
+.panel-width-Small .application-img img {
+  width: 24px;
+  height: 24px;
+}
+
+.panel-width-Medium .applicationsPanel > li > a,
+.panel-width-Medium .applicationsPanelMoreList > li > a,
+.panel-width-Medium .applicationPanelMoreContainer ul> li > a,
+.panel-width-Large .applicationsPanel > li > a,
+.panel-width-Large .applicationsPanelMoreList > li > a,
+.panel-width-Large .applicationPanelMoreContainer ul > li > a {
+  padding: 0;
+}
+
+.panel-width-Medium .applicationsPanel > li > a:hover,
+.panel-width-Medium .applicationsPanel > li > a:focus,
+.panel-width-Medium .applicationsPanelMoreList > li > a:hover,
+.panel-width-Medium .applicationsPanelMoreList > li > a:focus,
+.panel-width-Medium .applicationPanelMoreContainer ul> li > a:hover,
+.panel-width-Medium .applicationPanelMoreContainer ul> li > a:focus,
+.panel-width-Large .applicationsPanel > li > a:hover,
+.panel-width-Large .applicationsPanel > li > a:focus,
+.panel-width-Large .applicationsPanelMoreList > li > a:hover,
+.panel-width-Large .applicationsPanelMoreList > li > a:focus,
+.panel-width-Large .applicationPanelMoreContainer ul > li > a:hover 
+.panel-width-Large .applicationPanelMoreContainer ul > li > a:focus {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* Phone case */
+@media (max-width: 768px) {
+  .panel-width-Small .applicationsPanel li {
+    float: left;
+    width: 33%;
+  }
+
+  /* no responsive design for colibri */
+  .skin-colibri .panel-width-Small .applicationsPanel li {
+    float: none;
+    width: inherit;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .panel-width-Small .applicationsPanel li{
+    float: left;
+    width: 20%;
+  }
+
+  /* no responsive design for colibri */
+  .skin-colibri .panel-width-Small .applicationsPanel li {
+    float: none;
+    width: inherit;
+  }
+}
+
+/* for colibri */
+
+.skin-colibri .applicationPanelMoreContainer ul {
+  margin-left: 0;
+}
+
+.skin-colibri .panel-width-Medium .applicationPanelMoreContainer ul,
+.skin-colibri .panel-width-Large .applicationPanelMoreContainer ul {
+  margin-left: 20px;
+}
+
+.skin-colibri .panel-width-Small .applicationsPanel {
+  margin: 0;
+}
+
+.skin-colibri .panel-width-Small .applicationsPanel li {
+  padding: 15px 0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin: 1px 0;
+}
+
+.skin-colibri .panel-width-Small .applicationsPanel li.active {
+  background-color: #3E7CBC;  
+}
+
+.skin-colibri .panel-width-Small .applicationsPanel li.active a {
+  color: #fff
+}
+
+.skin-colibri .panel-width-Small .applicationsPanel li:hover {
+  background-color: #eeeeee;
+}
+
+.skin-colibri .panel-width-Small .applicationsPanel li:hover a {
+  color: #777777; 
+}
+
