@@ -68,7 +68,9 @@ public class OptDistService implements ScriptService {
     public void distribute () {
         algorithmDistribution = new DistributionAlgorithm();
         distribution = new Distribution(students);
-        
+    }
+    
+    public void exportDistribution () {
         
     }
 }
