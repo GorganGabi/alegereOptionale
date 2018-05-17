@@ -1,0 +1,219 @@
+body
+{
+	font: 15px/1.5 Arial, Helvetica,sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: #f4f4f4;
+}
+
+.containerBrand
+{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+header
+{
+	background: #4f74e3;
+	padding-top: 10px;
+	min-height: 10px;
+	border-bottom: #000000 3px solid;
+}
+
+header #branding
+{
+	float: left;
+}
+
+header #branding img
+{
+	width: 90px;
+}
+
+.LogOut
+{
+	float: right;
+	margin-right: 40px;
+	margin-top: 25px;
+    margin-bottom: 10px;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	cursor: pointer;
+}
+
+.LogOut:hover
+{
+	background-color: #4f74e3;
+}
+
+
+
+
+
+#FII
+{
+	border-bottom: #000000 3px solid;
+}
+
+
+#container 
+{
+
+	padding-left: 50px;
+	padding-right: 50px;
+    border-right: 2px solid #4f74e3;
+    border-left: 2px solid #4f74e3;
+    margin-left: 200px;
+    margin-right: 250px;
+    margin-top: 30px;
+    min-height: 450px;
+    text-align: left;   
+}
+
+
+
+
+
+.containerUAIC
+{
+	position: relative;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 0.1rem;
+	text-align: center;
+	border-top: #000000 3px solid;
+}
+
+
+.select-field1
+{
+    margin-top: 10px;
+	float: left;
+	width: 48%;
+	display:inline;
+	
+}
+
+.select-field2
+{	
+	
+	text-align:right;
+	float: right;
+	width: 48%;
+	display:inline;
+}
+
+#select 
+{height:30px;
+width:300px;
+}
+
+.select-field3
+{
+	float: left;
+	width: 90%;
+	margin-top: 60px;
+	margin-left: 100px;
+}
+
+.select-field3 p
+{
+	font-size: 20px;
+}
+
+.ModifElim
+{
+	margin-top: 120px;
+}
+
+
+.ModifElim .modificare
+{
+	float: left;
+	margin-left: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+
+.ModifElim .sterge
+{
+	float: right;
+	margin-right: 354px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+
+#pachet
+{
+  float: left;
+}
+
+#list
+ {
+ 	float: right;
+   height: 30px;
+ 	width: 300px;
+    margin-bottom: 10px;
+   margin-right: 370px;
+ }
+
+#pachet1
+{
+  float: left;
+}
+
+#list1
+ {
+ 	float: right;
+   height: 30px;
+ 	width: 300px;
+    margin-bottom: 10px;
+   margin-right: 300px;
+ }
+
+
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 36%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+	margin-left: 540px;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc; 
+}
+
+
+.aliniere {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+	text-align:center;
+	background-color: #eee;
+	font-size: 20px;
+}
+
+.submit
+{
+	margin-top: 80px;
+	margin-left: 383px;
+	cursor: pointer;
+}
+
+
