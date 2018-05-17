@@ -14,6 +14,15 @@ public class Optional implements OptionalInterface {
     String ID;
     float lastGrade;
    
+    public Optional(String ID, String name, int year, int semester) {
+        this.name = name;
+        this.year = year;
+        this.semester = semester;
+        this.capacity = capacity;
+        this.ID = ID;
+        this.enrolledStudents = 0;
+    }
+   
     public Optional(String name, int year, int semester, int capacity, String ID) {
         this.name = name;
         this.year = year;

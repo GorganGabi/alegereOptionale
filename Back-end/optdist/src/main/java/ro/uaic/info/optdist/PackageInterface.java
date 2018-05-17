@@ -12,5 +12,5 @@ public interface PackageInterface {
 	public int getYear();
 	public int getSemester();
 	public String getName();
-	public int getID();
+	public String getID();
 }

@@ -12,16 +12,15 @@ public class Package implements PackageInterface{
     private int year;
     private int semester;
     private String name;
-    private int ID;
+    private String ID;
     private static int packageCount = 0;
     
-    public Package(List<Optional> optionals, int year, int semester, String name) {
+    public Package(List<Optional> optionals, int year, int semester, String ID) {
         this.optionals = optionals;
         this.year = year;
         this.semester = semester;
-        this.name = name;
-        packageCount++;
-        this.ID = packageCount;
+        this.ID = ID;
+	packageCount++;
     }
  /*   
     public Package()
@@ -51,7 +50,7 @@ public class Package implements PackageInterface{
         return name;
     }
     
-    public int getID()
+    public String getID()
     {
         return ID;
     }
@@ -87,7 +86,7 @@ public class Package implements PackageInterface{
     /**
      * @param ID the ID to set
      */
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 }
