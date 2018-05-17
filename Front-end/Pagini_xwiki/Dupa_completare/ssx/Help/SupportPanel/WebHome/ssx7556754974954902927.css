@@ -1,0 +1,5 @@
+.SupportPanel ul {
+  list-style-type: inherit; 
+  list-style-position: inside; 
+  margin: 0;
+}
