@@ -1,0 +1,164 @@
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                        
+/***********************************************
+ * Notifications Header
+ ***********************************************/
+.notifications-count {
+  background-color: red;
+  opacity: 0.9;
+  position: absolute;
+  margin-left: 1.6em;
+  top: 0;
+}
+
+@media (min-width: 768px) {
+  .notifications-count {
+    top: 3px;
+  }
+}
+
+.notifications-header-uix {
+  text-align: right;
+  padding-bottom: 0.8em;
+}
+
+.notifications-header-link {
+  white-space: nowrap;
+}
+
+/***********************************************
+ * Notification Toggles
+ ***********************************************/
+.notifications-toggles {
+  text-align: center;
+  max-width: 320px;
+}
+
+.notifications-toggles .bootstrap-switch {
+  margin: 0 3px 0 3px;
+}
+
+.notifications-toggles .bootstrap-switch .bootstrap-switch-label {
+  background-image: linear-gradient(, #ECECEC 50%);
+  color: #4D5860;
+}
+
+/***********************************************
+ * Notification Area
+ ***********************************************/
+.notifications-area {
+  margin-top: 10px;
+  max-height: 600px;
+  min-height: 20px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* 320px is the width of the smallest smartphones right now, so we don't use a larger width */
+  width: 320px;
+}
+
+.notification-event {
+  border: 1px dashed #E8E8E8;
+  padding: 1em;
+}
+
+.notification-event-unread {
+  background-color: #F5F5F5;
+}
+
+/***********************************************
+ * Notification Icons
+ ***********************************************/
+.notification-icon {
+  padding-right: 0;
+  position: relative;
+}
+
+.notification-icon .img-thumbnail {
+  background-color: #FFFFFF;
+  font-size: 2em;
+  height: 2em;
+  text-align: center;
+  width: 2em;
+}
+
+.notification-icon .img-thumbnail.small{
+  font-size: 1em;
+  height: 2em;
+  left: 0.5em;
+  padding: 0.1em;
+  position: absolute;
+  bottom: -0.8em;
+  width: 2em;
+}
+
+/***********************************************
+ * Notification Content
+ ***********************************************/
+.notification-content {
+  padding: 0 2.6em 0 0.5em;
+}
+
+.notification-event-user > img {
+  height: 16px;
+  width: 16px;
+  /* Don't work for Internet Explorer nor Edge 15 */
+  object-fit: cover;
+  object-position: center;
+}
+
+/***********************************************
+ * Notification Buttons
+ ***********************************************/
+.notification-event-read-button, .toggle-notification-event-details {
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+  position: absolute;
+  right: 10px;
+  width: 2em;
+  z-index: 1;
+}
+
+.notification-event-read-button {
+  top: -6px;
+}
+
+.toggle-notification-event-details {
+  bottom: -6px;
+}
+
+/***********************************************
+ * Notification Details
+ ***********************************************/
+.notification-event-details {
+  font-size: 0.8em;
+  margin: 1em 0 0 0;
+}
+
+.notification-event-details td {
+  border: 0;
+  overflow: hidden;
+  padding: 2px;
+  text-overflow: ellipsis;
+  width: 33%;
+}
+
+.notification-event-details td.description {
+  width: 45%;
+}
+
+/***********************************************
+ * Notifications Footer
+ ***********************************************/
+.notifications-load-more {
+  cursor: pointer;
+  min-height: 2em;
+}
+
+.notifications-load-more:hover {
+  background-color: #eeeeee;
+}
+
+.notifications-load-more p {
+  margin: 0;
+  padding: 0.7em;
+}
