@@ -1,0 +1,137 @@
+body
+{
+	font: 15px/1.5 Arial, Helvetica,sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: #f4f4f4;
+}
+
+.containerBrand
+{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+header
+{
+	background: #4f74e3;
+	padding-top: 10px;
+	min-height: 10px;
+	border-bottom: #000000 3px solid;
+}
+
+header #branding
+{
+	float: left;
+}
+
+header #branding img
+{
+	width: 90px;
+}
+
+
+
+
+
+#FII
+{
+	border-bottom: #000000 3px solid;
+
+
+}
+
+#FII .LogoFII img
+{
+    width: 130px;
+    padding-left: 103px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-top: 7px;
+    column-count: 2;
+
+}
+
+
+#fii23{
+	color:green;
+    text-align: right;
+    margin-left:950px;
+    vertical-align: top;
+    font-size: large;
+    font-size: 25px;
+    border-style: solid;
+    border-width: 2px;
+    text-decoration:none; 
+
+}
+
+
+#container 
+{
+	padding-left: 150px;
+    border-right: 2px solid #4f74e3;
+    border-left: 2px solid #4f74e3;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 10px;   
+}
+
+
+
+
+
+footer
+{
+	margin-top: 10px;
+	border-top: #000000 3px solid;
+}
+
+footer #logo
+{
+	padding-left: 43px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+.vl {
+    border-left: 3px solid blue;
+    margin-left: 100px;
+    margin-top: 5px;
+    border-right: 3px solid blue;
+    margin-right: 100px;
+  
+    margin-bottom: 5px;
+}
+
+
+#titlu{
+	margin-left: 250px;
+}
+#titlu2{
+	margin-left: 450px;
+}
+
+#formular{
+		
+}
+
+
+
+#paragraf{
+	margin-left: 300px;
+}
+#paragraf2{
+	margin-left: 600px;
+}
+
+
+
+#optional3{
+	width: 50%;
+}
