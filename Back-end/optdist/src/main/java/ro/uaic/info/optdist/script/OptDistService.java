@@ -1,5 +1,7 @@
 package ro.uaic.info.optdist.script;
 
+import java.io.IOException;
+import java.net.ProtocolException;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
 
@@ -51,7 +53,7 @@ public class OptDistService implements ScriptService {
     private Distribution distribution;
     private DistributionAlgorithm algorithmDistribution;
     
-    public String beginSubmissions () {
+    public String beginSubmissions () throws Exception {
         String studsExcelPath = "C:\\students.xls";
         String packagesUrl = "";
         students.importStudents(xcParser.parse(studsExcelPath));
