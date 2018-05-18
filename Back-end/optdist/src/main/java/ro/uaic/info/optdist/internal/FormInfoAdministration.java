@@ -6,6 +6,11 @@ import org.xwiki.component.annotation.Component;
 
 import java.util.*;
 
+/**
+ * Manages a list of forms (FormInfo).
+ *
+ * @see FormInfo
+ */
 @Component
 public class FormInfoAdministration implements FormInfoAdministrationInterface {
 	private List<FormInfo> forms;
