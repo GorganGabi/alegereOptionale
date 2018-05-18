@@ -41,7 +41,7 @@ public class OptDistService implements ScriptService {
     private Optional test_optional;
     
     public String test_optional_creaiton () {
-        this.test_optional = new Optional("Programare Orientata Orizontal", 3, 2, 100, "CS1010101");
+        this.test_optional = new Optional("CS1010101", "Programare Orientata Orizontal", 3, 2);
         return this.test_optional.getName();
     }
     
