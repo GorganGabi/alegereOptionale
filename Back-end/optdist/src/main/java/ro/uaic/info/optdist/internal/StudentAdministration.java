@@ -42,7 +42,8 @@ public class StudentAdministration implements StudentAdministrationInterface {
     }
     
     /**
-     * Sets the internal list to the students found in the excel file (passed as an ExcelDump).
+     * Sets the internal list to the students found in the excel
+     * file (passed as an ExcelDump).
      * <p>
      * This method doesn't change the order in the excel in any way.
      * 

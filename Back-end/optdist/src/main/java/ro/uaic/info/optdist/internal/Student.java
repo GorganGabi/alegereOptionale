@@ -6,7 +6,9 @@ import org.xwiki.component.annotation.Component;
 /**
  * Stores all data relevant to a student.
  * <p>
- * Specifically, this data is the student's registration number (ro. numar matricol), name, surname, group, grade (ro. medie), year of study and optional course preferences.
+ * Specifically, this data is the student's registration number
+ * (ro. numar matricol), name, surname, group, grade (ro. medie),
+ * year of study and optional course preferences.
  * 
  * Aside from storing a student's data, this class does nothing.
  * 
@@ -24,9 +26,11 @@ public class Student implements StudentInterface {
     private Preference preference;
 
     /**
-     * Assigns to the created instance, in this order, the registration number, name, surname, group and grade.
+     * Assigns to the created instance, in this order,
+     * the registration number, name, surname, group and grade.
      * <p>
-     * The optional preferences aren't set in the constructor since the preferences may be unknown at the time of importing students.
+     * The optional preferences aren't set in the constructor since the
+     * preferences may be unknown at the time of importing students.
      * 
      * @param nrMatricol student's registration number
      * @param name student's name
