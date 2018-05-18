@@ -10,7 +10,8 @@ import java.util.Map;
 /**
  * 
  * Controls the distribution of the students.
- * Makes a call to the DistributionAlgorithm using the start() method and stores the result.
+ * Makes a call to the DistributionAlgorithm using the start() method and 
+ * stores the result.
  */
 
 
@@ -20,7 +21,11 @@ public class Distribution implements DistributionInterface {
     DistributionAlgorithm algorithm;
     
     /** 
-     * Stores the result of the matching algorithm. A hash map which maps a Student to a list of Optionals. The Optionals are stored in the desired order of the student; the closer to the start of the list an Optional is, the more the student desires to enroll into the Optional.
+     * Stores the result of the matching algorithm. 
+     * A hash map which maps a Student to a list of Optionals. 
+     * The Optionals are stored in the desired order of the student; the closer 
+     * to the start of the list an Optional is, the more the student desires to 
+     * enroll into the Optional.
      */
     Map<Student, List<Optional>>
             result = null;
@@ -37,7 +42,8 @@ public class Distribution implements DistributionInterface {
     /**
      * 
      * @param newStudents Contains the students along with their preferences.
-     * @param newAlgorithm Specifies the algorithm which will be used for the distribution of the students.
+     * @param newAlgorithm Specifies the algorithm which will be used for
+     * the distribution of the students.
      */
     
     public Distribution(StudentAdministration newStudents, DistributionAlgorithm newAlgorithm)
@@ -67,8 +73,10 @@ public class Distribution implements DistributionInterface {
     }
     
     /**
-     * Sets the algorithm to be used while matching the Students to the Optionals. There's only one at this point, more will be added if needed.
-     * @param newAlgorithm 
+     * Sets the algorithm to be used while matching the Students to the 
+     * Optionals. There's only one at this point, more will be added if needed.
+     * @param newAlgorithm Specifies the algorithm which will be used for
+     * the distribution of the students.
      */
     
     @Override
