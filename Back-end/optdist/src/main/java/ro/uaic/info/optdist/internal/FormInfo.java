@@ -40,7 +40,7 @@ public class FormInfo implements FormInfoInterface {
     	packages = new ArrayList<Package>();
     }
 
-	/** The function returns this form's list of packages.
+    /** The function returns this form's list of packages.
      * 
      * @see Package
      * @return form's list of packages

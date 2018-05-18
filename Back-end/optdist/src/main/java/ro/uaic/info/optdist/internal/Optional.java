@@ -4,6 +4,13 @@ import ro.uaic.info.optdist.*;
 
 import org.xwiki.component.annotation.Component;
 
+/**
+ * Stores all data relevant to an optional.
+ * <p>
+ * Specifically, this data is the optional's name, year, semester, current
+ * enrolled students, capacity, ID and admission grade.
+ * 
+ */
 @Component
 public class Optional implements OptionalInterface {
     String name;

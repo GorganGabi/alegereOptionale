@@ -8,17 +8,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
- * This class holds and provides access to the data extracted from the form completed by the student
+ * This class holds and provides access to the data extracted from the form completed by the student.
+ * <p>
+ * The class contains registration number (<i>ro numar matricol</i>) of the student
+ * and a map with his preferences like this: for every package available, 
+ * the student order a list of optionals (for more details, take a look at
+ * the form page).
+ * 
  * @author ggorgan
  */
 @Component
 public class FormResponse implements FormResponseInterface {
-    /**
-     * The class contains registration number (ro numar matricol) of the student
-     * and a map with his preferences like this: for every package available, 
-     * the student order a list of optionals (for more details, take a look at
-     * the form page)
-     */
+
     private String nrMatricol;
     private Map<Package, List<Optional>> prefs;
     

@@ -18,7 +18,7 @@ public class ExcelDump implements ExcelDumpInterface{
      */
     private int nrOfRows, nrOfColumns;
     /**
-     * This method gives acces to a cell of the bidimensional array
+     * This method gives access to a cell of the bidimensional array
      * @param x the line of the String to be retrieved
      * @param y the column of the String to be retrieved
      * @return the desired String
@@ -28,7 +28,7 @@ public class ExcelDump implements ExcelDumpInterface{
         return data[x][y];
     }
     /**
-     * A simple contructor for the class. It initializes the dimensions of the bidimensional array and the array itself.
+     * A simple constructor for the class. It initialises the dimensions of the bidimensional array and the array itself.
      * @param nrOfRows - the number of rows of the bidimentional array
      * @param nrOfColumns - the number of columns of the bidimensional array
      * @param data - the bidimensional array

@@ -7,7 +7,7 @@ import org.xwiki.component.annotation.Component;
  * Stores all data relevant to a student.
  * <p>
  * Specifically, this data is the student's registration number
- * (ro. numar matricol), name, surname, group, grade (ro. medie),
+ * (<i>ro numar matricol</i>), name, surname, group, grade (<i>ro medie</i>),
  * year of study and optional course preferences.
  * 
  * Aside from storing a student's data, this class does nothing.

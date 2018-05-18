@@ -16,7 +16,7 @@ public class StudentAdministration implements StudentAdministrationInterface {
     ArrayList<Student> studList;
     
     /**
-     * Orders the internal student list by grade (ro medie).
+     * Orders the internal student list by grade (<i>ro medie</i>).
      */
     @Override
     public void orderStudents()

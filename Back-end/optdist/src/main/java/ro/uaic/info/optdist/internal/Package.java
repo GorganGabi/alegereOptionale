@@ -7,8 +7,8 @@ import org.xwiki.component.annotation.Component;
 import java.util.List;
 
 /**
- * Contains a static atribute, packageCount, that counts the packages as we add them
- * and all the atributes that describe a package: a list of optionals, 
+ * Contains a static attribute, packageCount, that counts the packages as we add them
+ * and all the attributes that describe a package: a list of optionals, 
  * a year, a semester, a name and an ID.
  *
  */

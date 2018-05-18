@@ -1,7 +1,5 @@
 package ro.uaic.info.optdist.script;
 
-import java.io.IOException;
-import java.net.ProtocolException;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
 
@@ -77,9 +75,9 @@ public class OptDistService implements ScriptService {
     /**
      * Starts accepting preference forms from students.
      * <p>
-     * First, this method initialises this.students and this.packages.
-     * Second, it imports into the students from the path in this.studsExcelPath,
-     * and imports the packages into this.packages from the URL at this.packagesUrl.
+     * First, this method initialises <code>this.students</code> and <code>this.packages</code>.
+     * Second, it imports into the students from the path in <code>this.studsExcelPath</code>,
+     * and imports the packages into <code>this.packages</code> from the URL at <code>this.packagesUrl</code>.
      * 
      * At this point, the server is ready to accept forms from the student.
      * 
@@ -119,7 +117,8 @@ public class OptDistService implements ScriptService {
     }
     
     /**
-     * Starts the distribution algorithm with the data in this.students and this.packages.
+     * Starts the distribution algorithm with the data in <code>this.students</code>
+     * and <code>this.packages</code>.
      */
     public void distribute () {
         algorithmDistribution = new DistributionAlgorithm();
@@ -135,8 +134,8 @@ public class OptDistService implements ScriptService {
     }
     
     /**
-     * Resets the data in this.students and this.packages so that the submitting
-     * process can be restarted.
+     * Resets the data in <code>this.students</code> and <code>this.packages</code>
+     * so that the submitting process can be restarted.
      */
     public void reset () {
         // TODO verifica adminitate

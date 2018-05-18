@@ -7,6 +7,11 @@ import java.util.regex.*;
 
 import org.xwiki.component.annotation.Component;
 
+/**
+ * Manages a package list.
+ *
+ * @see Package
+ */
 @Component
 public class PackageAdministration {
     private List<Package> packageList;
