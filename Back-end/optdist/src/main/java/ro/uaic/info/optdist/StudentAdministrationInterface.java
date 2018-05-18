@@ -10,6 +10,5 @@ import ro.uaic.info.optdist.internal.ExcelDump;
 public interface StudentAdministrationInterface {
     void orderStudents();
     void addStudent(Student newStudent);
-    void addStudent(String nrMatricol, String name, String surname, String group, float grade);
     void importStudents(ExcelDump data);
 }
