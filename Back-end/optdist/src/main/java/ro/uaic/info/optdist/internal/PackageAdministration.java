@@ -15,7 +15,32 @@ public class PackageAdministration {
         packageList = new ArrayList<>();
     }
     
-    public void importPackages(String url) throws MalformedURLException, ProtocolException, IOException{
+    /**
+    * Imports the optional packages from the given URL into
+    * the packageList field. 
+    * <p>
+    * The argument must direct to a page containing a table
+    * formatted containing courses, formatted in a specific
+    * way, such as this one:
+    * https://www.info.uaic.ro/bin/Programs/Undergraduate
+    * <p>
+    * The function parses the course table and looks for the cell
+    * containing the package id, followed by a cell containing the
+    * "Optional Course" keywords. Then it loops through the row 
+    * and finds the cells containing the optional course names.
+    * The function gathers the course year from the second character
+    * of the package id and the semester from the third one.
+    * The optional id is obtained by concatenation between the package
+    * id and a 2 digit, zero padded number given by the order of listing
+    * of an optional course in a package table row.
+    * @param  url - an absolute URL giving the location of the courses page
+    * @see PackageAdministration
+    * @see Package
+    * @see Optional
+    * @throws java.net.MalformedURLException
+    * @throws java.net.ProtocolException
+    */
+    public void importPackages(String url) throws Exception{
         URL request = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) request.openConnection();
         
@@ -26,7 +51,7 @@ public class PackageAdministration {
 
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         
         while((inputLine = in.readLine()) != null) {
             response.append(inputLine);
@@ -105,11 +130,21 @@ public class PackageAdministration {
 
         this.packageList = packs;
     }
-
+    
+    /**
+    * Adds a package into the packageList.
+    * <p>
+    * @param newPackage the package that will be added
+    */
     public void addPackage (Package newPackage){
         packageList.add(newPackage);
     }
 
+    /**
+     * Gets a list of all the packages.
+     * <p>
+     * @return A list of 
+     */
     public List<Package> getPackageList(){
         return packageList;
     }
