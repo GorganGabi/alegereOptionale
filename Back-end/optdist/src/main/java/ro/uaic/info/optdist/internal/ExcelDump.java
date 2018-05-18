@@ -29,9 +29,9 @@ public class ExcelDump implements ExcelDumpInterface{
     }
     /**
      * A simple contructor for the class. It initializes the dimensions of the bidimensional array and the array itself.
-     * @param nrOfRows
-     * @param nrOfColumns
-     * @param data 
+     * @param nrOfRows - the number of rows of the bidimentional array
+     * @param nrOfColumns - the number of columns of the bidimensional array
+     * @param data - the bidimensional array
      */
     public ExcelDump(int nrOfRows, int nrOfColumns, String[][] data)
     {
