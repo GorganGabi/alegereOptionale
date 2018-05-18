@@ -90,7 +90,7 @@ public class Package implements PackageInterface{
 	
     /**Sets the package's optional list.
      * 
-     * @param package's new optional list
+     * @param optionals package's new optional list
      * @see Optional
      */
     public void setOptionals(List<Optional> optionals) {
@@ -99,7 +99,7 @@ public class Package implements PackageInterface{
 
     /**Sets the package's year.
      * 
-     * @param package's new oyear
+     * @param year package's new oyear
      */
     public void setYear(int year) {
         this.year = year;
@@ -107,7 +107,7 @@ public class Package implements PackageInterface{
 
     /**Sets the package's semester.
      * 
-     * @param package's new semester
+     * @param semester package's new semester
      */
     public void setSemester(int semester) {
         this.semester = semester;
@@ -115,7 +115,7 @@ public class Package implements PackageInterface{
 
     /**Sets the package's name.
      * 
-     * @param package's new name
+     * @param name package's new name
      */
     public void setName(String name) {
         this.name = name;
@@ -123,7 +123,7 @@ public class Package implements PackageInterface{
 
     /**Sets the package's ID.
      * 
-     * @param package's new ID
+     * @param ID package's new ID
      */
     public void setID(String ID) {
         this.ID = ID;

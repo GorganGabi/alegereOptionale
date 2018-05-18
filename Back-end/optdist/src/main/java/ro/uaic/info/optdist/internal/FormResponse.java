@@ -25,7 +25,7 @@ public class FormResponse implements FormResponseInterface {
     
     /**
      * This method imports the preferences of a student (identified by registration number) to the database
-     * @param nrMatricol 
+     * @param nrMatricol the registration number of the form to load
      */
     @Override
     public void importfromDB(String nrMatricol)
@@ -42,8 +42,8 @@ public class FormResponse implements FormResponseInterface {
     }
     /**
      * This is a simple constructor for the FormResponse class
-     * @param newNrMatricol
-     * @param newPrefs 
+     * @param newNrMatricol new instance's registration number
+     * @param newPrefs new instance's preferences
      */
     public FormResponse(String newNrMatricol, Map<Package, List<Optional>> newPrefs)
     {

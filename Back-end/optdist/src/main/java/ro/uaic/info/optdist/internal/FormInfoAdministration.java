@@ -23,13 +23,13 @@ public class FormInfoAdministration implements FormInfoAdministrationInterface {
 	 * At the end, the form created specifically for the Student is added to the list of forms
 	 * this class contains.
 	 * 
-	 * @see StudenttAdministration
+	 * @see StudentAdministration
 	 * @see PackageAdministration
 	 * @see Student
 	 * @see FormInfo
 	 * @see Package
-	 * @param students - the students that we have to generate forms for
-	 * @param packages - the packages that we have to distribute to the students
+	 * @param students the students that we have to generate forms for
+	 * @param packages the packages that we have to distribute to the students
 	 */
         @Override
 	public void generateForms(StudentAdministration students, PackageAdministration packages) {
@@ -59,7 +59,7 @@ public class FormInfoAdministration implements FormInfoAdministrationInterface {
 	/**Sets the list of forms from this class in the one we receive as parameter.
 	 * 
 	 * @see FormInfo
-	 * @param forms - A list of forms.
+	 * @param forms A list of forms.
 	 */
 	public void setForms(List<FormInfo> forms) {
 		this.forms = forms;
