@@ -19,7 +19,15 @@ import ro.uaic.info.optdist.internal.PackageAdministration;
 import ro.uaic.info.optdist.internal.Student;
 import ro.uaic.info.optdist.internal.StudentAdministration;
 
-
+/**
+ * The class that implements the project's logic and exposes an API
+ * to the xWiki scripting engine.
+ * 
+ * Functionalities exposed are: starting the submission period, accepting a
+ * submitted form, starting the student/optional distribution algorithm,
+ * exporting the distribution results and resetting all data so that
+ * the process can be restarted.
+ */
 @Component
 @Named("OptDist")
 @Singleton
@@ -53,14 +61,51 @@ public class OptDistService implements ScriptService {
     private Distribution distribution;
     private DistributionAlgorithm algorithmDistribution;
     
+    private final String packagesUrl = "https://www.info.uaic.ro/bin/Programs/Undergraduate";
+    private final String studsExcelPath = "C:\\students.xls";
+    
+    public String test_optional_parsing () throws Exception {
+        packages = new PackageAdministration();
+        packages.importPackages(packagesUrl);
+        return packages.getPackageList().get(1).getID();
+    }
+    
+    public String test_args (String arg1) {
+        return arg1;
+    }
+    
+    /**
+     * Starts accepting preference forms from students.
+     * <p>
+     * First, this method initialises this.students and this.packages.
+     * Second, it imports into the students from the path in this.studsExcelPath,
+     * and imports the packages into this.packages from the URL at this.packagesUrl.
+     * 
+     * At this point, the server is ready to accept forms from the student.
+     * 
+     * @return "Succes!" on success or "Esec!" on failure
+     * @throws Exception 
+     */
     public String beginSubmissions () throws Exception {
-        String studsExcelPath = "C:\\students.xls";
-        String packagesUrl = "";
+        students = new StudentAdministration();
+        packages = new PackageAdministration();
+        
         students.importStudents(xcParser.parse(studsExcelPath));
+        // TODO add try catch here:
         packages.importPackages(packagesUrl);
         return "Succes!";
     }
     
+    /**
+     * Validates a form containing the preferences of a student then
+     * exports it to the database for the distribution process.
+     * 
+     * @param nrMatricol registration number of the student that submitted
+     * the form
+     * @param preferences an array of optional IDs ordered by the student's
+     * preference
+     * @return status message
+     */
     public String submitForm (String nrMatricol, String... preferences) {
         if (!true) { // TODO verifica data
             return "Proces esuat. Perioada de submit a expirat.";
@@ -73,16 +118,26 @@ public class OptDistService implements ScriptService {
         return "Formular depus.";
     }
     
+    /**
+     * Starts the distribution algorithm with the data in this.students and this.packages.
+     */
     public void distribute () {
         algorithmDistribution = new DistributionAlgorithm();
         distribution = new Distribution(students, algorithmDistribution);
         distribution.start();
     }
     
+    /**
+     * Exports the distribution results in the predetermined format.
+     */
     public void exportDistribution () {
         // TODO salveaza in BD rezultatul
     }
     
+    /**
+     * Resets the data in this.students and this.packages so that the submitting
+     * process can be restarted.
+     */
     public void reset () {
         // TODO verifica adminitate
         
