@@ -1,5 +1,6 @@
 package ro.uaic.info.optdist.script;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
@@ -72,6 +73,26 @@ public class OptDistService implements ScriptService {
     
     public String test_args (String arg1) {
         return arg1;
+    }
+    
+    public List<Student> createStudentList () {
+        return new ArrayList<>();
+    }
+    
+    public List<Optional> createOptionalList () {
+        return new ArrayList<>();
+    }
+    
+    public List<Package> createPackageList () {
+        return new ArrayList<>();
+    }
+    
+    public ro.uaic.info.optdist.internal.Package createPackage (List<Optional> optionals, int year, int semester, String ID) {
+        return new ro.uaic.info.optdist.internal.Package(optionals, year, semester, ID);
+    }
+    
+    public Optional createOptional (String ID, String name, int year, int semester) {
+        return new Optional (ID, name, year, semester);
     }
     
     /**
