@@ -28,7 +28,7 @@ public class FormResponse implements FormResponseInterface {
      * @param nrMatricol the registration number of the form to load
      */
     @Override
-    public void importfromDB(String nrMatricol)
+    public void importFromDB(String nrMatricol)
     {
         System.out.println("[FormResponse] importFromDB");
     }
