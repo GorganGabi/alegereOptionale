@@ -1,5 +1,6 @@
 package ro.uaic.info.optdist.script;
 
+import java.util.List;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
 
@@ -51,6 +52,7 @@ public class OptDistService implements ScriptService {
         return this.test_optional.getName();
     }
     
+
     
     private StudentAdministration students;
     private PackageAdministration packages;
@@ -92,6 +94,10 @@ public class OptDistService implements ScriptService {
         // TODO add try catch here:
         packages.importPackages(packagesUrl);
         return "Succes!";
+    }
+    
+    public List<ro.uaic.info.optdist.internal.Package> getPackageList () {
+        return this.packages.getPackageList();
     }
     
     /**
