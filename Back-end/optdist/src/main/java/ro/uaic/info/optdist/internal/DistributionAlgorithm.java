@@ -1,5 +1,6 @@
 package ro.uaic.info.optdist.internal;
 
+import java.util.ArrayList;
 import ro.uaic.info.optdist.*;
 
 import org.xwiki.component.annotation.Component;
@@ -21,16 +22,6 @@ import java.util.Map;
 
 @Component
 public class DistributionAlgorithm implements DistributionAlgorithmInterface {
-    
-/**
- * @see StudentAdministration
- * @see Student
- * @see Optional
- * @param students Object that should be populated with the students and their preferences.
- * 
- * @return A hash map which maps a Student to a list of Optionals. The Optionals are stored in the desired order of the student; the closer to the start of the list an Optional is, the more the student desires to enroll into the Optional.
- */
-    
     @Override
     public Map<Student,List<Optional>> match(StudentAdministration students)    
     {
@@ -39,30 +30,35 @@ public class DistributionAlgorithm implements DistributionAlgorithmInterface {
         
         for(Student student : students.studList )
         {
-            List<Optional> optionale = null;
-            for (Map.Entry<Package, List<Optional>> entry : student.getPreference().getPreference().entrySet() ){
-                for (Optional opt : entry.getValue() ) {
-                    if (opt.getEnrolledStudents() < opt.getCapacity())
+            System.out.println(student.getName());
+            List<Optional> optionale = new ArrayList<Optional>();
+                for (Map.Entry<Package, List<Optional>> entries : student.getPreference().getPreference().entrySet() ) 
+                {
+                    for(int i=0; i< entries.getKey().getOptionals().size();i++)
                     {
-                        opt.setEnrolledStudents(opt.getEnrolledStudents() + 1);
-                        opt.setLastGrade(student.getGrade());
-                        optionale.add(opt);
+                        //System.out.println(entries.getValue().get(i).name);
+                    if (entries.getValue().get(i).getEnrolledStudents() < entries.getValue().get(i).getCapacity())
+                    {
+                        entries.getValue().get(i).setEnrolledStudents(entries.getValue().get(i).getEnrolledStudents() + 1);
+                        entries.getValue().get(i).setLastGrade(student.getGrade());
+                        optionale.add(entries.getValue().get(i));
+                        System.out.println(entries.getValue().get(i).name);
                         break;
                     }
                     else
                     {
-                        if (opt.getEnrolledStudents() == opt.getCapacity() && opt.getLastGrade() == student.getGrade())
+                        if (entries.getValue().get(i).getEnrolledStudents() == entries.getValue().get(i).getCapacity() && entries.getValue().get(i).getLastGrade() == student.getGrade())
                         {
-                            opt.setEnrolledStudents(opt.getEnrolledStudents() + 1);
-                            opt.setCapacity(opt.getCapacity()+1);
-                            optionale.add(opt);
+                            entries.getValue().get(i).setEnrolledStudents(entries.getValue().get(i).getEnrolledStudents() + 1);
+                            entries.getValue().get(i).setCapacity(entries.getValue().get(i).getCapacity()+1);
+                            optionale.add(entries.getValue().get(i));
+                            System.out.println(entries.getValue().get(i).name);
                             break;
                         }
                     }
+                    }
                 }
-                result.put(student, optionale);
-            }
+            result.put(student, optionale);
         }
         return result;
-    }
-}
+}}
