@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Role
 public interface FormResponseInterface {
-	void importFromDB(String nrMatricol);
+	void importfromDB(String nrMatricol);
 	void exportToDB();
 	public String getNrMatricol();
 	public Map<ro.uaic.info.optdist.internal.Package, List<Optional>> getPrefs();
