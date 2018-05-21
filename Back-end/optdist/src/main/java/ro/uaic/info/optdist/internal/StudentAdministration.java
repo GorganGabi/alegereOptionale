@@ -6,6 +6,7 @@ import org.xwiki.component.annotation.Component;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
+import java.util.List;
 /**
  * Manages a student list.
  *
@@ -14,6 +15,13 @@ import java.util.Collections;
 @Component
 public class StudentAdministration implements StudentAdministrationInterface {
     ArrayList<Student> studList;
+    
+    /**
+     * Initializes the internal student list with an empty list.
+     */
+    public StudentAdministration () {
+        this.studList = new ArrayList<>();
+    }
     
     /**
      * Orders the internal student list by grade (<i>ro medie</i>).
@@ -54,5 +62,44 @@ public class StudentAdministration implements StudentAdministrationInterface {
     public void importStudents(ExcelDump data)
     {
         
+    }
+    
+    /** 
+     * Return, from the internal student list, a student
+     * identified by the specified registration number.
+     * 
+     * @param nrMatricol the registration number against which
+     * to match the student
+     * @return the desired student
+     */
+    @Override
+    public Student getStudentByReg (String nrMatricol) {    
+        for(int i = 0; i < studList.size(); i++) {
+            if (studList.get(i).getNrMatricol().equals(nrMatricol)){ 
+                return studList.get(i);
+            }
+        }
+        
+        return null;
+    }
+        
+    /**
+     * Creates a list of students in a certain year,
+     * based on the existing internal list of students.
+     * 
+     * @param year the year against which students are matched
+     * @return new list of desired students
+     */
+    @Override
+    public List<Student> getStudentsByYear (int year) {
+        List<Student> result = new ArrayList<>();
+        
+        for(int i = 0; i < studList.size(); i++) {
+            if (studList.get(i).getYear() == year){
+                result.add(studList.get(i));
+            }
+        }
+        
+        return null;
     }
 }
