@@ -40,20 +40,7 @@ public class OptDistService implements ScriptService {
     }
     
     private Student test_student;
-    
-    public String test_student_creation () {
-        this.test_student = new Student("192SL00777", "Vasile", "Vasilescu", "V3", 1.9f);
-        return test_student.getNrMatricol();
-    }
-    
     private Optional test_optional;
-    
-    public String test_optional_creaiton () {
-        this.test_optional = new Optional("CS1010101", "Programare Orientata Orizontal", 3, 2);
-        return this.test_optional.getName();
-    }
-    
-
     
     private StudentAdministration students;
     private PackageAdministration packages;
@@ -62,8 +49,32 @@ public class OptDistService implements ScriptService {
     private Distribution distribution;
     private DistributionAlgorithm algorithmDistribution;
     
-    private final String packagesUrl = "https://www.info.uaic.ro/bin/Programs/Undergraduate";
-    private final String studsExcelPath = "C:\\students.xls";
+    private String packagesUrl = "https://www.info.uaic.ro/bin/Programs/Undergraduate";
+    private String studsExcelPath = "C:\\students.xls";
+    
+    private boolean hasInit = false;
+    
+    public String test_student_creation () {
+        this.test_student = new Student("192SL00777", "Vasile", "Vasilescu", "V3", 1.9f);
+        return test_student.getNrMatricol();
+    }
+    
+    public String test_student_administration () {
+        Student tmpStudent = new Student("192SL00777", "Vasile", "Vasilescu", "V3", 1.9f);
+        tmpStudent.setYear(2);
+        this.students.addStudent(tmpStudent);
+        
+        Student tmpStudent1 = new Student("192SL00778", "Ion", "Ionescu", "V3", 1.9f);
+        tmpStudent1.setYear(2);
+        this.students.addStudent(tmpStudent1);
+        
+        return "Succes";
+    }
+    
+    public String test_optional_creaiton () {
+        this.test_optional = new Optional("CS1010101", "Programare Orientata Orizontal", 3, 2);
+        return this.test_optional.getName();
+    }
     
     public String test_optional_parsing () throws Exception {
         packages = new PackageAdministration();
@@ -74,25 +85,33 @@ public class OptDistService implements ScriptService {
     public String test_args (String arg1) {
         return arg1;
     }
+
+    /*
+    private StudentAdministration students;
+    private PackageAdministration packages;
+    private ExcelParser xcParser;
     
-    public List<Student> createStudentList () {
-        return new ArrayList<>();
-    }
+    private Distribution distribution;
+    private DistributionAlgorithm algorithmDistribution;
     
-    public List<Optional> createOptionalList () {
-        return new ArrayList<>();
-    }
+    private String packagesUrl = "https://www.info.uaic.ro/bin/Programs/Undergraduate";
+    private String studsExcelPath = "C:\\students.xls";
+    */
+
     
-    public List<Package> createPackageList () {
-        return new ArrayList<>();
-    }
-    
-    public ro.uaic.info.optdist.internal.Package createPackage (List<Optional> optionals, int year, int semester, String ID) {
-        return new ro.uaic.info.optdist.internal.Package(optionals, year, semester, ID);
-    }
-    
-    public Optional createOptional (String ID, String name, int year, int semester) {
-        return new Optional (ID, name, year, semester);
+    /**
+     * Initializes internal objects with empty ones.
+     * 
+     */
+    public void init () {
+        students = new StudentAdministration();
+        packages = new PackageAdministration();
+        xcParser = new ExcelParser();
+        
+        algorithmDistribution = new DistributionAlgorithm();
+        distribution = new Distribution(students, algorithmDistribution);
+        
+        hasInit = true;
     }
     
     /**
@@ -104,22 +123,23 @@ public class OptDistService implements ScriptService {
      * 
      * At this point, the server is ready to accept forms from the student.
      * 
-     * @return "Succes!" on success or "Esec!" on failure
+     * @return "Succes!" on success or "Esec:" and then the exception message on failure
      * @throws Exception 
      */
     public String beginSubmissions () throws Exception {
-        students = new StudentAdministration();
-        packages = new PackageAdministration();
-        
         students.importStudents(xcParser.parse(studsExcelPath));
-        // TODO add try catch here:
-        packages.importPackages(packagesUrl);
+        
+        try {
+            packages.importPackages(packagesUrl);
+        } catch (Exception e) {
+            return "Esec: " + e.getMessage();
+        }
+        
         return "Succes!";
     }
     
-    public List<ro.uaic.info.optdist.internal.Package> getPackageList () {
-        return this.packages.getPackageList();
-    }
+    
+
     
     /**
      * Validates a form containing the preferences of a student then
@@ -148,8 +168,6 @@ public class OptDistService implements ScriptService {
      * and <code>this.packages</code>.
      */
     public void distribute () {
-        algorithmDistribution = new DistributionAlgorithm();
-        distribution = new Distribution(students, algorithmDistribution);
         distribution.start();
     }
     
@@ -157,18 +175,69 @@ public class OptDistService implements ScriptService {
      * Exports the distribution results in the predetermined format.
      */
     public void exportDistribution () {
-        // TODO salveaza in BD rezultatul
+        // TODO salveaza in BD rezultatul(?)
     }
-    
+
+
     /**
-     * Resets the data in <code>this.students</code> and <code>this.packages</code>
-     * so that the submitting process can be restarted.
+     * Nullifies all internal data objects except for the student excel path
+     * and the packages' URL.
      */
-    public void reset () {
+    public void stop () {
         // TODO verifica adminitate
         
         this.students = null;
         this.packages = null;
         this.distribution = null;
+        this.algorithmDistribution = null;
+        this.xcParser = null;
+        hasInit = false;
+    }
+    
+    
+    public List<Student> createStudentList () {
+        return new ArrayList<>();
+    }
+    
+    public List<Optional> createOptionalList () {
+        return new ArrayList<>();
+    }
+    
+    public List<Package> createPackageList () {
+        return new ArrayList<>();
+    }
+    
+    public ro.uaic.info.optdist.internal.Package createPackage (List<Optional> optionals, int year, int semester, String ID) {
+        return new ro.uaic.info.optdist.internal.Package(optionals, year, semester, ID);
+    }
+    
+    public Optional createOptional (String ID, String name, int year, int semester) {
+        return new Optional (ID, name, year, semester);
+    }
+    
+    
+    
+    public void setPackagesUrl (String newUrl) {
+        this.packagesUrl = newUrl;
+    }
+    
+    public String getPackagesUrl () {
+        return this.packagesUrl;
+    }
+    
+    public void setStudentExcelPath (String newPath) {
+        this.studsExcelPath = newPath;
+    }
+    
+    public String getStudentExcelPath () {
+        return this.studsExcelPath;
+    }
+    
+    public PackageAdministration getPackages () {
+        return this.packages;
+    }
+    
+    public StudentAdministration getStudents () {
+        return this.students;
     }
 }
