@@ -195,22 +195,47 @@ public class OptDistService implements ScriptService {
     }
     
     
+    /**
+     * Creates empty <code>List&lt;Student&gt;</code> object.
+     * 
+     * @return the empty <code>List&lt;Student&gt;</code> created
+     */
     public List<Student> createStudentList () {
         return new ArrayList<>();
     }
     
+    /**
+     * Creates empty <code>List&lt;Optional&gt;</code> object.
+     * 
+     * @return the empty <code>List&lt;Optional&gt;</code> created
+     */
     public List<Optional> createOptionalList () {
         return new ArrayList<>();
     }
     
+    /**
+     * Creates empty <code>List&lt;Package&gt;</code> object.
+     * 
+     * @return the empty <code>List&lt;Package&gt;</code> created
+     */
     public List<Package> createPackageList () {
         return new ArrayList<>();
     }
-    
+
+    /**
+     * Creates empty <code>Package</code> object.
+     * 
+     * @return the empty <code>Package</code> created
+     */
     public ro.uaic.info.optdist.internal.Package createPackage (List<Optional> optionals, int year, int semester, String ID) {
         return new ro.uaic.info.optdist.internal.Package(optionals, year, semester, ID);
     }
     
+    /**
+     * Creates empty <code>Optional</code> object.
+     * 
+     * @return the empty <code>Optional</code> created
+     */
     public Optional createOptional (String ID, String name, int year, int semester) {
         return new Optional (ID, name, year, semester);
     }
