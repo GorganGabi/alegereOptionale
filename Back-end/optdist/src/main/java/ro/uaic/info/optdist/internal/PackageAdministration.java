@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.regex.*;
 
 import org.xwiki.component.annotation.Component;
+import ro.uaic.info.optdist.PackageAdministrationInterface;
 
 /**
  * Manages a package list.
@@ -13,7 +14,7 @@ import org.xwiki.component.annotation.Component;
  * @see Package
  */
 @Component
-public class PackageAdministration {
+public class PackageAdministration implements PackageAdministrationInterface {
     private List<Package> packageList;
     
     public PackageAdministration(){
@@ -45,6 +46,7 @@ public class PackageAdministration {
     * @throws java.net.MalformedURLException
     * @throws java.net.ProtocolException
     */
+    @Override
     public void importPackages(String url) throws Exception{
         URL request = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) request.openConnection();
@@ -141,8 +143,27 @@ public class PackageAdministration {
     * <p>
     * @param newPackage the package that will be added
     */
+    @Override
     public void addPackage (Package newPackage){
         packageList.add(newPackage);
+    }
+    
+    /** 
+     * Return, from the internal package list, a package
+     * identified by the specified ID.
+     * 
+     * @param ID the ID by which to match the package
+     * @return the desired package
+     */
+    @Override
+    public Package getPackageByID (String ID) {
+        for(int i = 0; i < packageList.size(); i++) {
+            if (packageList.get(i).getID().equals(ID)){ 
+                return packageList.get(i);
+            }
+        }
+        
+        return null;
     }
 
     /**
@@ -150,6 +171,7 @@ public class PackageAdministration {
      * <p>
      * @return A list of 
      */
+    @Override
     public List<Package> getPackageList(){
         return packageList;
     }

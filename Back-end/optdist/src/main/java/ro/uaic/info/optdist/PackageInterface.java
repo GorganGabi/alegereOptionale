@@ -13,4 +13,10 @@ public interface PackageInterface {
 	public int getSemester();
 	public String getName();
 	public String getID();
+        public void replace (ro.uaic.info.optdist.internal.Package newPackage);
+        public void setOptionals(List<Optional> optionals);
+        public void setYear(int year);
+        public void setSemester(int semester);
+        public void setName(String name);
+        public void setID(String ID);
 }

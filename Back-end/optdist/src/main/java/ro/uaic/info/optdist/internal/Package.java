@@ -21,7 +21,7 @@ public class Package implements PackageInterface{
     private String ID;
     private static int packageCount = 0;
     
-	/** Constructor that besides assigning also raises the packageCount.
+    /** Constructor that besides assigning also raises the packageCount.
      * 
      * @param optionals this package's list of optionals
      * @param year the package's year
@@ -35,6 +35,20 @@ public class Package implements PackageInterface{
         this.ID = ID;
 	packageCount++;
     }
+    
+    /**
+     * Copies all of <code>newPackage</code>'s members into the
+     * current instance (i.e.&nbsp;<code>this</code>).
+     * 
+     * @param newPackage the package that is to be copied into <code>this</code> instance
+     */
+    @Override
+    public void replace (Package newPackage) {
+        this.optionals = newPackage.optionals;
+        this.year = newPackage.year;
+        this.semester = newPackage.semester;
+        this.ID = newPackage.ID;
+    }
  /*   
     public Package()
     {
@@ -47,6 +61,7 @@ public class Package implements PackageInterface{
      * @see Optional
      * @return A list of Optionals
      */
+    @Override
     public List<Optional> getOptionals()
     {
         return optionals;
@@ -56,6 +71,7 @@ public class Package implements PackageInterface{
      * 
      * @return package's year
      */
+    @Override
     public int getYear()
     {
         return year;
@@ -65,6 +81,7 @@ public class Package implements PackageInterface{
     * 
     * @return package's semester
     */
+    @Override
     public int getSemester()
     {
         return semester;
@@ -74,6 +91,7 @@ public class Package implements PackageInterface{
      * 
      * @return package's name
      */
+    @Override
     public String getName()
     {
         return name;
@@ -83,6 +101,7 @@ public class Package implements PackageInterface{
      * 
      * @return package's ID
      */
+    @Override
     public String getID()
     {
         return ID;
@@ -93,6 +112,7 @@ public class Package implements PackageInterface{
      * @param optionals package's new optional list
      * @see Optional
      */
+    @Override
     public void setOptionals(List<Optional> optionals) {
         this.optionals = optionals;
     }
@@ -101,6 +121,7 @@ public class Package implements PackageInterface{
      * 
      * @param year package's new oyear
      */
+    @Override
     public void setYear(int year) {
         this.year = year;
     }
@@ -109,6 +130,7 @@ public class Package implements PackageInterface{
      * 
      * @param semester package's new semester
      */
+    @Override
     public void setSemester(int semester) {
         this.semester = semester;
     }
@@ -117,6 +139,7 @@ public class Package implements PackageInterface{
      * 
      * @param name package's new name
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -125,6 +148,7 @@ public class Package implements PackageInterface{
      * 
      * @param ID package's new ID
      */
+    @Override
     public void setID(String ID) {
         this.ID = ID;
     }
