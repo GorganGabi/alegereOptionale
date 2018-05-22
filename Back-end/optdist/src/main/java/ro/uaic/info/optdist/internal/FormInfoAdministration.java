@@ -15,6 +15,13 @@ import java.util.*;
 public class FormInfoAdministration implements FormInfoAdministrationInterface {
 	private List<FormInfo> forms;
 	
+        /**
+         * Initialises the internal list with an empty list.
+         */
+        FormInfoAdministration () {
+            this.forms = new ArrayList<>();
+        }
+        
 	/**The function parses the list of students that is offered through the first parameter, 
 	 * it creates a new form for each student then parses the package list we receive through
 	 * the second parameter. If the year in which the student is about to pass into is equal to 

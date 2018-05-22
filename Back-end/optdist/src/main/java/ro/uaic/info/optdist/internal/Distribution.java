@@ -1,5 +1,6 @@
 package ro.uaic.info.optdist.internal;
 
+import java.util.HashMap;
 import ro.uaic.info.optdist.*;
 
 import org.xwiki.component.annotation.Component;
@@ -36,6 +37,7 @@ public class Distribution implements DistributionInterface {
      */
     public Distribution(StudentAdministration newStudents)
     {
+        this. result = new HashMap<>();
         this.students = newStudents;
     }
     
@@ -48,6 +50,7 @@ public class Distribution implements DistributionInterface {
     
     public Distribution(StudentAdministration newStudents, DistributionAlgorithm newAlgorithm)
     {
+        this. result = new HashMap<>();
         this.students = newStudents;
         this.algorithm = newAlgorithm;
     }
@@ -69,7 +72,7 @@ public class Distribution implements DistributionInterface {
     @Override
     public void start()
     {
-        algorithm.match(students);
+        this.result = algorithm.match(students);
     }
     
     /**

@@ -1,5 +1,6 @@
 package ro.uaic.info.optdist.internal;
 
+import java.util.HashMap;
 import ro.uaic.info.optdist.*;
 import org.xwiki.component.annotation.Component;
 
@@ -23,6 +24,8 @@ public class Preference implements PreferenceInterface {
      */
     public Preference(FormResponse studentInput)
     {
+        this.preference = new HashMap<>();
+        
         for (Map.Entry<Package, List<Optional>> entry : studentInput.getPrefs().entrySet()){
                 preference.put(entry.getKey(),entry.getValue());
         }

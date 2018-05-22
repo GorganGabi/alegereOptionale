@@ -225,6 +225,10 @@ public class OptDistService implements ScriptService {
     /**
      * Creates empty <code>Package</code> object.
      * 
+     * @param optionals the new package's optional list
+     * @param year the new package's year
+     * @param semester the new package's semester
+     * @param ID the new package's ID
      * @return the empty <code>Package</code> created
      */
     public ro.uaic.info.optdist.internal.Package createPackage (List<Optional> optionals, int year, int semester, String ID) {
@@ -234,6 +238,10 @@ public class OptDistService implements ScriptService {
     /**
      * Creates empty <code>Optional</code> object.
      * 
+     * @param ID the new optional's ID
+     * @param name the new optional's name
+     * @param year the new optional's year
+     * @param semester the new optional's semester
      * @return the empty <code>Optional</code> created
      */
     public Optional createOptional (String ID, String name, int year, int semester) {
