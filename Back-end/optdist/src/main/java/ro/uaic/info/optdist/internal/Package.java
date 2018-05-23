@@ -66,6 +66,23 @@ public class Package implements PackageInterface{
     {
         return optionals;
     }
+    
+    /**
+     * Returns, if there is any, an optional with the given ID 
+     * in the current package.
+     * 
+     * @param ID
+     * @return 
+     */
+    public Optional getOptionalByID (String ID) {
+        for(int i = 0; i < optionals.size(); i++) {
+            if (optionals.get(i).getID().equals(ID)){ 
+                return optionals.get(i);
+            }
+        }
+        
+        return null;
+    }
 
      /** The function returns this package's year.
      * 

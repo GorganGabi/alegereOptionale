@@ -9,6 +9,7 @@ import java.util.List;
 @Role
 public interface PackageInterface {
 	public List<Optional> getOptionals();
+        public Optional getOptionalByID (String ID);
 	public int getYear();
 	public int getSemester();
 	public String getName();
