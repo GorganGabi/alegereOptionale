@@ -101,13 +101,6 @@ public class OptionalTest {
         int expResult = 0;
         int result = instance.getID();
         assertTrue(expResult == result);
-     
-    private void assertEquals(String expResult, String result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-       private void assertTrue(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+      }
 
 }
