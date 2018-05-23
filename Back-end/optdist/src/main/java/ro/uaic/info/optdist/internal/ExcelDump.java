@@ -39,4 +39,14 @@ public class ExcelDump implements ExcelDumpInterface{
         this.nrOfColumns = nrOfColumns;
         this.data = data;
     }
+
+    /**
+     * Returns the number of rows.
+     * 
+     * @return nrOfRows
+     */
+    public int getNrOfRows()
+    {
+    	return nrOfRows;
+    }
 }
