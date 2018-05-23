@@ -61,7 +61,29 @@ public class StudentAdministration implements StudentAdministrationInterface {
     @Override
     public void importStudents(ExcelDump data)
     {
+        int i, j = 1;
+    	String nrMatricol;
+        String name;
+        String surname;
+        String group;
+        float grade;
+        int year;
+        Student student;
         
+        for(i = 0; i < data.getNrOfRows(); i++)
+        {	
+        	nrMatricol = data.get(i,j);
+        	name = data.get(i,j+1);
+        	surname = data.get(i,j+2);
+        	year = Integer.parseInt(data.get(i,j+3));
+        	group = data.get(i,j+4);
+        	grade = Integer.parseInt(data.get(i,j+5));
+        		
+        	student = new Student(nrMatricol, name, surname, group, grade);
+        	student.setYear(year);
+        		
+        	addStudent(student);
+        }    
     }
     
     /** 
