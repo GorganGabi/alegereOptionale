@@ -1,6 +1,8 @@
 package ro.uaic.info.optdist.script;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
@@ -14,6 +16,7 @@ import javax.inject.Singleton;
 import ro.uaic.info.optdist.internal.Distribution;
 import ro.uaic.info.optdist.internal.DistributionAlgorithm;
 import ro.uaic.info.optdist.internal.ExcelParser;
+import ro.uaic.info.optdist.internal.FormInfoAdministration;
 import ro.uaic.info.optdist.internal.Optional;
 import ro.uaic.info.optdist.internal.PackageAdministration;
 import ro.uaic.info.optdist.internal.Student;
@@ -45,6 +48,8 @@ public class OptDistService implements ScriptService {
     private StudentAdministration students;
     private PackageAdministration packages;
     private ExcelParser xcParser;
+    
+    private FormInfoAdministration forms;
     
     private Distribution distribution;
     private DistributionAlgorithm algorithmDistribution;
@@ -85,28 +90,33 @@ public class OptDistService implements ScriptService {
     public String test_args (String arg1) {
         return arg1;
     }
-
-    /*
-    private StudentAdministration students;
-    private PackageAdministration packages;
-    private ExcelParser xcParser;
     
-    private Distribution distribution;
-    private DistributionAlgorithm algorithmDistribution;
+    public String test_list_get (List<String> list, int index) {
+        return list.get(index);
+    }
     
-    private String packagesUrl = "https://www.info.uaic.ro/bin/Programs/Undergraduate";
-    private String studsExcelPath = "C:\\students.xls";
-    */
-
+    private final long dayMillis = 86400000;
+    private final long weekMillis = 604800000;
     
     /**
-     * Initializes internal objects with empty ones.
+     * Initialisation method that has to be called before the OptDist
+     * is able to operate.
+     * 
+     * Specifically, <code>init()</code> initialises all internal objects
+     * with empty ones, sets the time to live of the forms to 1 week after 
+     * the current time and sets to true an internal flag, memorising that
+     * the initialisation has been done.
      * 
      */
     public void init () {
         students = new StudentAdministration();
         packages = new PackageAdministration();
         xcParser = new ExcelParser();
+        
+        Calendar expiration = Calendar.getInstance();
+        // 604800000 ms == 1 week
+        expiration.setTime(new Date(System.currentTimeMillis() + weekMillis));
+        forms = new FormInfoAdministration(expiration);
         
         algorithmDistribution = new DistributionAlgorithm();
         distribution = new Distribution(students, algorithmDistribution);
@@ -115,16 +125,26 @@ public class OptDistService implements ScriptService {
     }
     
     /**
+     * Set the time to live to <code>days</code> days from the current time.
+     * 
+     * @param days the number of days from the current time to set the form to expire
+     */
+    public void setTTL (int days) {
+        this.forms.getTTL().setTime(new Date(System.currentTimeMillis() + days * dayMillis));
+    }
+    
+    /**
      * Starts accepting preference forms from students.
      * <p>
      * First, this method initialises <code>this.students</code> and <code>this.packages</code>.
      * Second, it imports into the students from the path in <code>this.studsExcelPath</code>,
-     * and imports the packages into <code>this.packages</code> from the URL at <code>this.packagesUrl</code>.
+     * and imports the packages into <code>this.packages</code> from the URL at <code>this.packagesUrl</code>,
+     * potentially throwing an exception in case of invalid URL.
      * 
      * At this point, the server is ready to accept forms from the student.
      * 
      * @return "Succes!" on success or "Esec:" and then the exception message on failure
-     * @throws Exception 
+     * @throws Exception could not import the packages
      */
     public String beginSubmissions () throws Exception {
         students.importStudents(xcParser.parse(studsExcelPath));
@@ -137,30 +157,44 @@ public class OptDistService implements ScriptService {
         
         return "Succes!";
     }
-    
-    
 
     
     /**
      * Validates a form containing the preferences of a student then
      * exports it to the database for the distribution process.
+     * <p>
+     * For each element in <code>packageIDs</code>, there must be 
+     * a list in the <code>optionalIDs</code> array. In essence, for each package
+     * received in <code>packageIDs</code> there is a <code>List</code> of optionals
+     * ordered, descending, by the student's submitted preferences.
+     * <p>
+     * The actual contents of <code>packageIDs</code> are the IDs 
+     * (type <code>String</code> of the corresponding package. The same goes for
+     * <code>optionalIDs</code> though note that <code>optionalIDs</code> is
+     * an array of lists and so each element of <code>optionalIDs</code> is a
+     * list of <code>Strings</code> that contain the IDs of the respective 
+     * <code>Optional</code>s.
+     * <p>
+     * This method is called whenever a student submits a form.
      * 
-     * @param nrMatricol registration number of the student that submitted
-     * the form
-     * @param preferences an array of optional IDs ordered by the student's
-     * preference
+     * 
+     * @param packageIDs the list of package IDs that the student has chosen 
+     * optional preferences for
+     * @param optionalIDs the array of lists of optional IDs that, by their order,
+     * represent the student's preference of optionals in each package for which
+     * there is an entry in <code>packageIDs</code>
      * @return status message
      */
-    public String submitForm (String nrMatricol, String... preferences) {
-        if (!true) { // TODO verifica data
-            return "Proces esuat. Perioada de submit a expirat.";
+    public String submitForm (List<String> packageIDs, List<String>... optionalIDs) {
+        if (!Calendar.getInstance().after(forms.getTTL())) { // TODO verifica data
+            return "Esec! Perioada de submit a expirat.";
         }
         
         // TODO convert datele in preferinte
         
         // TODO inserat in BD
         
-        return "Formular depus.";
+        return "Succes!";
     }
     
     /**
@@ -248,6 +282,13 @@ public class OptDistService implements ScriptService {
         return new Optional (ID, name, year, semester);
     }
     
+    public void addToOptionalList (List<Optional> list, Optional newOptional) {
+        list.add(newOptional);
+    }
+
+    public Optional getFromOptionalList (List<Optional> list, int index) {
+        return list.get(index);
+    }
     
     
     public void setPackagesUrl (String newUrl) {

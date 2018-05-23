@@ -165,6 +165,34 @@ public class PackageAdministration implements PackageAdministrationInterface {
         
         return null;
     }
+    
+    
+    /** 
+     * Return, from the internal package list, a list of packages
+     * in the specified year and semester.
+     * 
+     * If the year or semester specified is 0, then it will match any value.
+     * 
+     * @param year the year against which to match the packages
+     * @param semester the semester against which to match the packages
+     * @return a new list of packages from the specified year
+     */
+    @Override
+    public List<Package> getPackagesByRank (int year, int semester) {    
+        List<Package> result = new ArrayList<>();
+        
+        for(int i = 0; i < packageList.size(); i++) {
+            
+            if (year == 0 || packageList.get(i).getYear() == year){
+                if (semester == 0 || packageList.get(i).getSemester() == semester){
+                    result.add(packageList.get(i));
+                }
+            }
+            
+        }
+        
+        return result;
+    }
 
     /**
      * Gets a list of all the packages.

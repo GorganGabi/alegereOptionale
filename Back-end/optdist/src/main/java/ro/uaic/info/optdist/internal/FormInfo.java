@@ -16,17 +16,13 @@ import java.util.ArrayList;
 @Component
 public class FormInfo implements FormInfoInterface {
     private List<Package> packages;
-    private Calendar TTL;
     
-    /** Constructor.
+    /** Creates a <code>FormInfo</code> with the given list of packages.
      * 
      * @see Package
-     * @param newTTL form's time to live
      * @param newPackages form's list of packages
      */
-    public FormInfo(Calendar newTTL, List<Package> newPackages)
-    {
-        this.TTL = newTTL;
+    public FormInfo(List<Package> newPackages) {        
         this.packages = newPackages;
     }
     
@@ -37,24 +33,26 @@ public class FormInfo implements FormInfoInterface {
      * @see Package
      */	
     public FormInfo() {
-    	packages = new ArrayList<Package>();
+    	packages = new ArrayList<>();
     }
 
-	/** The function returns this form's list of packages.
+    /** The function returns this form's list of packages.
      * 
      * @see Package
      * @return form's list of packages
      */
-	public List<Package> getPackages() {
-		return packages;
-	}
+    @Override
+    public List<Package> getPackages() {
+        return packages;
+    }
 	
-	/**Sets the form's list of packages.
+    /**Sets the form's list of packages.
      * 
      * @see Package
      * @param packages form's new list of packages
      */
-	public void setPackages(List<Package> packages) {
-		this.packages = packages;
-	}
+    @Override
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
+    }
 }

@@ -13,4 +13,5 @@ public interface PackageAdministrationInterface {
 	public void addPackage (Package newPackage);
 	public List<Package> getPackageList();
         public Package getPackageByID (String ID);
+        public List<Package> getPackagesByRank (int year, int semester);
 }

@@ -100,6 +100,6 @@ public class StudentAdministration implements StudentAdministrationInterface {
             }
         }
         
-        return null;
+        return result;
     }
 }
