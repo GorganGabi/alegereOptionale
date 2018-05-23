@@ -178,6 +178,7 @@ public class OptDistService implements ScriptService {
      * This method is called whenever a student submits a form.
      * 
      * 
+     * @param nrMatricol the registration number of the student that submitted
      * @param packageIDs the list of package IDs that the student has chosen 
      * optional preferences for
      * @param optionalIDs the array of lists of optional IDs that, by their order,
@@ -185,7 +186,7 @@ public class OptDistService implements ScriptService {
      * there is an entry in <code>packageIDs</code>
      * @return status message
      */
-    public String submitForm (List<String> packageIDs, List<String>... optionalIDs) {
+    public String submitForm (String nrMatricol, List<String> packageIDs, List<String>... optionalIDs) {
         if (!Calendar.getInstance().after(forms.getTTL())) { // TODO verifica data
             return "Esec! Perioada de submit a expirat.";
         }
