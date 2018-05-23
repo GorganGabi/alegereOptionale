@@ -15,6 +15,9 @@ import java.util.Map;
  * the student order a list of optionals (for more details, take a look at
  * the form page).
  * 
+ * @see Package
+ * @see Optional
+ * @see HashMap
  * @author ggorgan
  */
 @Component
@@ -67,6 +70,24 @@ public class FormResponse implements FormResponseInterface {
     @Override
     public String getNrMatricol() {
         return nrMatricol;
+    }
+    /**
+     * Sets a new registration number for the current instance.
+     * 
+     * @param newNrMatricol the new registration number to be set
+     */
+    @Override
+    public void setNrMatricol(String newNrMatricol) {
+        this.nrMatricol = newNrMatricol;
+    }
+
+    /**
+     * Sets a new preferences mapping for the current instance.
+     * 
+     * @param newPrefs the new preferences mapping to be set
+     */
+    @Override
+    public void setPrefs(Map<ro.uaic.info.optdist.internal.Package, List<Optional>> newPrefs) {
     }
     /**
      * 

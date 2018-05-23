@@ -12,4 +12,6 @@ public interface FormResponseInterface {
 	void exportToDB();
 	public String getNrMatricol();
 	public Map<ro.uaic.info.optdist.internal.Package, List<Optional>> getPrefs();
+        public void setPrefs(Map<ro.uaic.info.optdist.internal.Package, List<Optional>> newPrefs);
+        public void setNrMatricol(String newNrMatricol);
 }
