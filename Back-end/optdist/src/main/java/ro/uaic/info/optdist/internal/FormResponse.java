@@ -88,6 +88,7 @@ public class FormResponse implements FormResponseInterface {
      */
     @Override
     public void setPrefs(Map<ro.uaic.info.optdist.internal.Package, List<Optional>> newPrefs) {
+        this.prefs = newPrefs;
     }
     /**
      * 
