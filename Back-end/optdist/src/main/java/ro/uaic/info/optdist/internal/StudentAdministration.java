@@ -77,7 +77,7 @@ public class StudentAdministration implements StudentAdministrationInterface {
         	surname = data.get(i,j+2);
         	year = Integer.parseInt(data.get(i,j+3));
         	group = data.get(i,j+4);
-        	grade = Integer.parseInt(data.get(i,j+5));
+        	grade = Float.parseFloat(data.get(i,j+5));
         		
         	student = new Student(nrMatricol, name, surname, group, grade);
         	student.setYear(year);
