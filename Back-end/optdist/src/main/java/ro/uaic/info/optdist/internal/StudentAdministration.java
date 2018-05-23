@@ -75,7 +75,7 @@ public class StudentAdministration implements StudentAdministrationInterface {
         	nrMatricol = data.get(i,j);
         	name = data.get(i,j+1);
         	surname = data.get(i,j+2);
-        	year = Integer.parseInt(data.get(i,j+3));
+        	year = Math.round(Float.parseFloat(data.get(i,j+3)));
         	group = data.get(i,j+4);
         	grade = Float.parseFloat(data.get(i,j+5));
         		
