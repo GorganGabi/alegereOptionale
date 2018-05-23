@@ -3,7 +3,9 @@ package ro.uaic.info.optdist.script;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.script.service.ScriptService;
 
@@ -17,8 +19,10 @@ import ro.uaic.info.optdist.internal.Distribution;
 import ro.uaic.info.optdist.internal.DistributionAlgorithm;
 import ro.uaic.info.optdist.internal.ExcelParser;
 import ro.uaic.info.optdist.internal.FormInfoAdministration;
+import ro.uaic.info.optdist.internal.FormResponse;
 import ro.uaic.info.optdist.internal.Optional;
 import ro.uaic.info.optdist.internal.PackageAdministration;
+import ro.uaic.info.optdist.internal.Preference;
 import ro.uaic.info.optdist.internal.Student;
 import ro.uaic.info.optdist.internal.StudentAdministration;
 
@@ -187,13 +191,46 @@ public class OptDistService implements ScriptService {
      * @return status message
      */
     public String submitForm (String nrMatricol, List<String> packageIDs, List<String>... optionalIDs) {
-        if (!Calendar.getInstance().after(forms.getTTL())) { // TODO verifica data
+        if (Calendar.getInstance().after(forms.getTTL())) { // TODO verifica data
             return "Esec! Perioada de submit a expirat.";
         }
         
-        // TODO convert datele in preferinte
+        if (packageIDs.size() != optionalIDs.length) {
+            throw new IllegalArgumentException("Esec! packageIDs si optionalIDs nu sunt de aceeasi lungime!");
+        }
         
-        // TODO inserat in BD
+        
+        Student submitterStudent = this.students.getStudentByReg(nrMatricol);
+        
+        FormResponse submitterForm = new FormResponse();
+        submitterForm.setNrMatricol(nrMatricol);
+        
+        Map<ro.uaic.info.optdist.internal.Package, List<Optional>> submitterPrefs = new HashMap<>();
+        
+        ro.uaic.info.optdist.internal.Package currentPackage = null;
+        List<Optional> currentOptionalList = null;
+        Optional currentOptional = null;
+        
+        for (int iterPackage = 0; iterPackage < packageIDs.size(); iterPackage++) {
+            currentPackage = packages.getPackageByID(packageIDs.get(iterPackage));
+            
+            currentOptionalList = new ArrayList<>();
+            for (int iterOptionals = 0; iterOptionals < optionalIDs.length; iterOptionals++) {
+                currentOptional = currentPackage.getOptionalByID(optionalIDs[iterPackage].get(iterOptionals));
+                
+                currentOptionalList.add(currentOptional);
+            }
+            
+            submitterPrefs.put(currentPackage, currentOptionalList);
+        }
+        
+        submitterForm.setPrefs(submitterPrefs);
+        
+        Preference submitterPreference = new Preference(submitterForm);
+        
+        submitterStudent.setPreference(submitterPreference);
+        
+        // TODO inserat in BD(?)
         
         return "Succes!";
     }
@@ -210,7 +247,7 @@ public class OptDistService implements ScriptService {
      * Exports the distribution results in the predetermined format.
      */
     public void exportDistribution () {
-        // TODO salveaza in BD rezultatul(?)
+        // TODO exporta cumva rezultatul
     }
 
 
