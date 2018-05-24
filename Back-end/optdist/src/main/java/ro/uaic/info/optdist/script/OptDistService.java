@@ -352,4 +352,8 @@ public class OptDistService implements ScriptService {
     public StudentAdministration getStudents () {
         return this.students;
     }
+    
+    public Distribution getDistribution () {
+        return this.distribution;
+    }
 }
