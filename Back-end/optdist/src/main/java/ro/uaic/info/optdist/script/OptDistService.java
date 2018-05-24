@@ -1,5 +1,8 @@
 package ro.uaic.info.optdist.script;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,6 +17,10 @@ import ro.uaic.info.optdist.HelloWorld;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import ro.uaic.info.optdist.internal.Distribution;
 import ro.uaic.info.optdist.internal.DistributionAlgorithm;
@@ -60,6 +67,7 @@ public class OptDistService implements ScriptService {
     
     private String packagesUrl = "https://www.info.uaic.ro/bin/Programs/Undergraduate";
     private String studsExcelPath = "C:\\students.xls";
+    private String exportPath = "C:\\exportStudents.xlsx";
     
     private boolean hasInit = false;
     
@@ -246,8 +254,59 @@ public class OptDistService implements ScriptService {
     /**
      * Exports the distribution results in the predetermined format.
      */
-    public void exportDistribution () {
-        // TODO exporta cumva rezultatul
+    public void exportDistribution () throws IOException {
+        Map<Optional, List<Student>> optionalDistribution;
+        List<Student> optionalStudents;
+        List<Optional> optionalsChosen;
+        Workbook workbook;
+        FileOutputStream fileOut;
+        
+        optionalDistribution = new HashMap();
+        
+        for(ro.uaic.info.optdist.internal.Package pack : packages.getPackageList())
+            for(Optional opt : pack.getOptionals())
+            {
+                optionalStudents = new ArrayList();
+                optionalDistribution.put(opt, optionalStudents);
+            }
+        
+        for(Student student : distribution.getResult().keySet())
+        {
+            optionalsChosen = distribution.getResult().get(student);
+            for(Optional optional : optionalsChosen)
+                optionalDistribution.get(optional).add(student);
+        }
+        
+        workbook = new XSSFWorkbook();
+        
+        for(Optional optional : optionalDistribution.keySet())
+        {
+            Sheet sheet;
+            if(optional.getName().contains(":"))
+                sheet = workbook.createSheet(optional.getName().split(":")[0]);
+            else
+                sheet = workbook.createSheet(optional.getName());
+            int rowNum = 0;
+            for(Student student : optionalDistribution.get(optional))
+            {
+                Row row = sheet.createRow(rowNum);
+                row.createCell(0).setCellValue(student.getName());
+                row.createCell(1).setCellValue(student.getSurname());
+            }
+        }
+        
+        try 
+        {
+            fileOut = new FileOutputStream(exportPath);
+            workbook.write(fileOut);
+            fileOut.close();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Fisierul xlsx nu a fost gasit!");
+        } catch (IOException ex) {
+            System.out.println("I/O Exception");
+        }
     }
 
 
@@ -344,6 +403,15 @@ public class OptDistService implements ScriptService {
     public String getStudentExcelPath () {
         return this.studsExcelPath;
     }
+    
+    public void setExportExcelPath (String newPath) {
+        this.exportPath = newPath;
+    }
+    
+    public String getExportExcelPath () {
+        return this.exportPath;
+    }
+    
     
     public PackageAdministration getPackages () {
         return this.packages;
