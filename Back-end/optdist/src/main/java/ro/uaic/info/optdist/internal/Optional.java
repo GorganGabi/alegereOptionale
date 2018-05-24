@@ -38,7 +38,7 @@ public class Optional implements OptionalInterface {
         this.semester = semester;
         this.ID = ID;
         this.enrolledStudents = 0;
-        this.capacity = 0;
+        this.capacity = 1;
     }
     
     /**
