@@ -124,7 +124,7 @@ public class PackageAdministration implements PackageAdministrationInterface {
                 
                 //System.out.println(optId);
                 
-                String optName = optIdMatcher.replaceAll("");
+                String optName = optIdMatcher.replaceAll("").replaceall("^ ", "");
                 
                 //System.out.println(optName);
                 
