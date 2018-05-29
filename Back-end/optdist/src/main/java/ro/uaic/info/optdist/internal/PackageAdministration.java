@@ -124,7 +124,7 @@ public class PackageAdministration implements PackageAdministrationInterface {
                 
                 //System.out.println(optId);
                 
-                String optName = optIdMatcher.replaceAll("").replaceall("^ ", "");
+                String optName = optIdMatcher.replaceAll("").replaceAll("^ ", "");
                 
                 //System.out.println(optName);
                 
@@ -202,5 +202,19 @@ public class PackageAdministration implements PackageAdministrationInterface {
     @Override
     public List<Package> getPackageList(){
         return packageList;
+    }
+    
+    @Override
+    public void setImplicitCapacity(StudentAdministration studs)
+    {
+        for (int year = 2; year <=3; year++)
+        {
+            int noStuds = studs.getStudentsByYear(year).size();
+            for (Package pkg : this.getPackagesByRank(year, 0))
+                for (Optional opt: pkg.getOptionals())
+                {
+                    opt.setCapacity(int(noStuds/pkg.getOptionals().size() * 11/10));
+                }
+        }
     }
 }
