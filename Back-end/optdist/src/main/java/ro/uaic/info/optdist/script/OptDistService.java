@@ -146,20 +146,43 @@ public class OptDistService implements ScriptService {
     }
     
     /**
-     * Starts accepting preference forms from students.
+     * Imports the students from the the internal student excel 
+     * path, <code>this.studsExcelPath</code>.
      * <p>
-     * First, this method initialises <code>this.students</code> and <code>this.packages</code>.
-     * Second, it imports into the students from the path in <code>this.studsExcelPath</code>,
-     * and imports the packages into <code>this.packages</code> from the URL at <code>this.packagesUrl</code>,
-     * potentially throwing an exception in case of invalid URL.
+     * Before importing, it is necessary to initialise the server <code>init()</code>.
      * 
-     * At this point, the server is ready to accept forms from the student.
-     * 
-     * @return "Succes!" on success or "Esec:" and then the exception message on failure
-     * @throws Exception could not import the packages
+     * @return a string containing the status message
+     * @throws java.lang.Exception
+     * @see init
      */
-    public String beginSubmissions () throws Exception {
-        students.importStudents(xcParser.parse(studsExcelPath));
+    public String importStudents () throws Exception {
+        if (!hasInit) {
+            return "Esec: serverul nu a fost initializat!";
+        }
+        
+        try {
+            students.importStudents(xcParser.parse(studsExcelPath));
+        } catch (Exception e) {
+            return "Esec: " + e.getMessage();
+        }
+        
+        return "Succes!";
+    }
+    
+    /**
+     * Imports the packages from the the internal package url,
+     * <code>this.packagesUrl</code>.
+     * <p>
+     * Before importing, it is necessary to initialise the server <code>init()</code>.
+     * 
+     * @return a string containing the status message
+     * @throws java.lang.Exception
+     * @see init
+     */
+    public String importPackages () throws Exception {
+        if (!hasInit) {
+            return "Esec: serverul nu a fost initializat!";
+        }
         
         try {
             packages.importPackages(packagesUrl);
@@ -315,8 +338,6 @@ public class OptDistService implements ScriptService {
      * and the packages' URL.
      */
     public void stop () {
-        // TODO verifica adminitate
-        
         this.students = null;
         this.packages = null;
         this.distribution = null;
