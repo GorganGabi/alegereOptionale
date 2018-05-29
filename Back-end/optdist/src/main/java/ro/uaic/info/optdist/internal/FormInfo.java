@@ -15,14 +15,18 @@ import java.util.ArrayList;
  */
 @Component
 public class FormInfo implements FormInfoInterface {
+    private Student student;
     private List<Package> packages;
     
     /** Creates a <code>FormInfo</code> with the given list of packages.
      * 
-     * @see Package
+     * @param newStudent
      * @param newPackages form's list of packages
+     * 
+     * @see Package
      */
-    public FormInfo(List<Package> newPackages) {        
+    public FormInfo(Student newStudent, List<Package> newPackages) {        
+        this.student = null;
         this.packages = newPackages;
     }
     
@@ -33,6 +37,7 @@ public class FormInfo implements FormInfoInterface {
      * @see Package
      */	
     public FormInfo() {
+        student = null;
     	packages = new ArrayList<>();
     }
 
@@ -54,5 +59,25 @@ public class FormInfo implements FormInfoInterface {
     @Override
     public void setPackages(List<Package> packages) {
         this.packages = packages;
+    }
+    
+    /** The function returns this form's student.
+     * 
+     * @see Package
+     * @return form's student
+     */
+    //@Override
+    public Student getStudent() {
+        return student;
+    }
+	
+    /**Sets the form's student.
+     * 
+     * @param newStudent
+     * @see Package
+     */
+    //@Override
+    public void setStudent(Student newStudent) {
+        this.student = newStudent;
     }
 }

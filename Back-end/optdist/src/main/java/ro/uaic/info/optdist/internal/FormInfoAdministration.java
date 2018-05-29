@@ -55,7 +55,9 @@ public class FormInfoAdministration implements FormInfoAdministrationInterface {
     public void generateForms(StudentAdministration students, PackageAdministration packages) {
         for (Student i : students.studList) {
             FormInfo form = new FormInfo();
-
+            
+            form.setStudent(i);
+            
             for (Package j : packages.getPackageList()) {
                 if (i.getYear() + 1 == j.getYear()) {
                     form.getPackages().add(j);
@@ -64,6 +66,41 @@ public class FormInfoAdministration implements FormInfoAdministrationInterface {
             
             forms.add(form);
         }
+    }
+    
+    /**
+     * Looks in the internal form list for the provided student's 
+     * form data and returns it.
+     * 
+     * @param forWhom the student whose form data is requested
+     * @return the form of the provided student
+     */
+    public FormInfo getForm (Student forWhom) {
+        for (int i = 0; i < forms.size(); i++) {
+            if (this.forms.get(i).getStudent().getNrMatricol().equals(forWhom.getNrMatricol())) {
+                return this.forms.get(i);
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Looks in the internal form list for the provided student's
+     * (by registration number) form data and returns it.
+     * 
+     * @param forWhomNrMat the registration number of 
+     * the student whose form data is requested
+     * @return the form of the provided student
+     */
+    public FormInfo getForm (String forWhomNrMat) {
+        for (int i = 0; i < forms.size(); i++) {
+            if (this.forms.get(i).getStudent().getNrMatricol().equals(forWhomNrMat)) {
+                return this.forms.get(i);
+            }
+        }
+        
+        return null;
     }
     
     /**
