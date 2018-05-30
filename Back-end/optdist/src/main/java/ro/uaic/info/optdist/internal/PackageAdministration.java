@@ -213,7 +213,7 @@ public class PackageAdministration implements PackageAdministrationInterface {
             for (Package pkg : this.getPackagesByRank(year, 0))
                 for (Optional opt: pkg.getOptionals())
                 {
-                    opt.setCapacity(int(noStuds/pkg.getOptionals().size() * 11/10));
+                    opt.setCapacity((int)(noStuds/pkg.getOptionals().size() * 11/10));
                 }
         }
     }
