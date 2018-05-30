@@ -122,7 +122,6 @@ public class orderTest {
         instance.addStudent(s1);
         instance.addStudent(s2);
         if (!(instance.orderStudents()) instanceof Float)
-            fail("Compare does not return a float value");
         
     }
     //verifica daca order returneaza nota mai mare
