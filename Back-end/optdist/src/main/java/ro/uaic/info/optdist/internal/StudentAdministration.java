@@ -32,7 +32,7 @@ public class StudentAdministration implements StudentAdministrationInterface {
         Collections.sort(studList, new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {
-                return s1.getGrade()<s2.getGrade()? -1 : ((s2.getGrade() > s1.getGrade() ? 1 : 0));
+                return s1.getGrade()>s2.getGrade()? -1 : ((s2.getGrade() < s1.getGrade() ? 1 : 0));
             }
         });
     }
