@@ -1,5 +1,6 @@
 package ro.uaic.info.optdist.internal;
 
+import java.util.ArrayList;
 import ro.uaic.info.optdist.*;
 
 import org.xwiki.component.annotation.Component;
@@ -43,6 +44,7 @@ public class Package implements PackageInterface{
      * @param ID the package's ID
      */
     public Package(int year, int semester, String ID) {
+        this.optionals = new ArrayList<>();
         this.year = year;
         this.semester = semester;
         this.ID = ID;

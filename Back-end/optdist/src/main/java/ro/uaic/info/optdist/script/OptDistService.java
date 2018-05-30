@@ -397,7 +397,7 @@ public class OptDistService implements ScriptService {
             buffer.get(nrMatricol).put(packageID, emptyOptList);
         }
         
-        if (buffer.get(nrMatricol).get(packageID).get(priority).equals("")) {
+        if (!buffer.get(nrMatricol).get(packageID).get(priority).equals("")) {
             status += "O preferinta a fost suprascrisa!\n";
         }
         
