@@ -1,0 +1,9 @@
+*Am instalat Java 9 . Daca aveti altceva,dezinstalati ce aveti si downloadati-l si voi
+1.Pentru simplitate am mutat folderul XWiki... pe Desktop si l-am redenumit simplu "xwiki"
+2.Deschizi CMD si scrii: 
+	cd desktop
+	cd xwiki
+	start_xwiki.bat 8181
+3.Deschizi browserul si scrii la URL    localhost:8181
+4.In coltul din dreapta sus sunt trei liniute->click pe login-> username:Admin(cu A mare) password:admin(cu a mic)
+5.Click pe acelasi meniu->search import->click pe import->upload .xar
