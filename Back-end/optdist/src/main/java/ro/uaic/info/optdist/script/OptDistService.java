@@ -135,6 +135,8 @@ public class OptDistService implements ScriptService {
         algorithmDistribution = new DistributionAlgorithm();
         distribution = new Distribution(students, algorithmDistribution);
         
+        buffer = new HashMap<>();
+        
         hasInit = true;
         hasSynced = false;
     }
@@ -198,7 +200,7 @@ public class OptDistService implements ScriptService {
     
     /**
      * Validates a form containing the preferences of a student then
-     * exports it to the database for the distribution process.
+     * memorises it for the distribution process.
      * <p>
      * For each element in <code>packageIDs</code>, there must be 
      * a list in the <code>optionalIDs</code> array. In essence, for each package
@@ -268,6 +270,33 @@ public class OptDistService implements ScriptService {
         return "Succes!";
     }
     
+    /**
+     * Validates a form containing the preferences of a student then
+     * memorises it for the distribution process.
+     * <p>
+     * For each element in <code>packageIDs</code>, there must be 
+     * a list in the <code>optionalIDs</code> array. In essence, for each package
+     * received in <code>packageIDs</code> there is a <code>List</code> of optionals
+     * ordered, descending, by the student's submitted preferences.
+     * <p>
+     * The actual contents of <code>packageIDs</code> are the IDs 
+     * (type <code>String</code> of the corresponding package. The same goes for
+     * <code>optionalIDs</code> though note that <code>optionalIDs</code> is
+     * an array of lists and so each element of <code>optionalIDs</code> is a
+     * list of <code>Strings</code> that contain the IDs of the respective 
+     * <code>Optional</code>s.
+     * <p>
+     * This method is called whenever a student submits a form.
+     * 
+     * 
+     * @param nrMatricol the registration number of the student that submitted
+     * @param packageIDs the list of package IDs that the student has chosen 
+     * optional preferences for
+     * @param optionalIDs the array of lists of optional IDs that, by their order,
+     * represent the student's preference of optionals in each package for which
+     * there is an entry in <code>packageIDs</code>
+     * @return status message
+     */
     public String submitForm (String nrMatricol, List<String> packageIDs, List<List<String>> optionalIDs) {
         if (Calendar.getInstance().after(forms.getTTL())) { // TODO verifica data
             return "Esec! Perioada de submit a expirat.";
@@ -314,7 +343,20 @@ public class OptDistService implements ScriptService {
     }
     
     HashMap<String, HashMap<String, ArrayList<String>>> buffer;
-    
+    /**
+     * Memorizes a single optional (part of the student's whole preference)
+     * in an internal buffer.
+     * 
+     * The given data isn't actually part of the internal data used for the distribution.
+     * To actually use the data in the buffer, <code>flushPreferences()</code>
+     * must be called.
+     * 
+     * @param nrMatricol registration number of the student whose preference is passed
+     * @param packageID the package id of the passed optional
+     * @param optionalID the passed optional's id
+     * @param priority the priority of the optional in the student's preference (0 being highest)
+     * @return the status message
+     */
     public String submitSinglePreference (String nrMatricol, String packageID, String optionalID, int priority) {
         // TODO check if synced optionals
         
@@ -363,10 +405,25 @@ public class OptDistService implements ScriptService {
         return status + "Succes!";
     }
     
+    /**
+     * Wrapper to the function of the same name that accepts 
+     * the priority as a String.
+     * 
+     * @param nrMatricol registration number of the student whose preference is passed
+     * @param packageID the package id of the passed optional
+     * @param optionalID the passed optional's id
+     * @param priority the priority of the optional in the student's preference (0 being highest)
+     * @return the status message
+     */
     public String submitSinglePreference (String nrMatricol, String packageID, String optionalID, String priority) {
         return submitSinglePreference (nrMatricol, packageID, optionalID, Integer.parseInt(priority));
     }
     
+    /**
+     * Flushes the internal preference buffer 
+     * 
+     * @return status messages
+     */
     public String flushPreferences () {
         for (String nrMat : buffer.keySet()) {
             List<String> packList = new ArrayList<>();
