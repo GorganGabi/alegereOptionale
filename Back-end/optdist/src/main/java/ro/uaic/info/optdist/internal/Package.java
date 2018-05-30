@@ -36,6 +36,19 @@ public class Package implements PackageInterface{
 	packageCount++;
     }
     
+    /** Constructor that besides assigning also raises the packageCount.
+     * 
+     * @param year the package's year
+     * @param semester the package's semester 
+     * @param ID the package's ID
+     */
+    public Package(int year, int semester, String ID) {
+        this.year = year;
+        this.semester = semester;
+        this.ID = ID;
+	packageCount++;
+    }
+    
     /**
      * Copies all of <code>newPackage</code>'s members into the
      * current instance (i.e.&nbsp;<code>this</code>).

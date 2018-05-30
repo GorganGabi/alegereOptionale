@@ -70,8 +70,8 @@ public class OptDistService implements ScriptService {
     private String exportPath = "C:\\exportStudents.xlsx";
     
     private boolean hasInit = false;
-    private boolean hasSynced = false;
-    private boolean hasDistribed = false;
+    private boolean flagSync = false;
+    private boolean flagGetPrefs = false;
     
     public String test_student_creation () {
         this.test_student = new Student("192SL00777", "Vasile", "Vasilescu", "V3", 1.9f);
@@ -138,7 +138,8 @@ public class OptDistService implements ScriptService {
         buffer = new HashMap<>();
         
         hasInit = true;
-        hasSynced = false;
+        flagSync = false;
+        flagGetPrefs = false;
     }
     
     /**
@@ -518,70 +519,35 @@ public class OptDistService implements ScriptService {
         this.algorithmDistribution = null;
         this.xcParser = null;
         hasInit = false;
-        hasSynced = false;
-        hasDistribed = false;
-    }
-    
-    
-    /**
-     * Creates empty <code>List&lt;Student&gt;</code> object.
-     * 
-     * @return the empty <code>List&lt;Student&gt;</code> created
-     */
-    public List<Student> createStudentList () {
-        return new ArrayList<>();
-    }
-    
-    /**
-     * Creates empty <code>List&lt;Optional&gt;</code> object.
-     * 
-     * @return the empty <code>List&lt;Optional&gt;</code> created
-     */
-    public List<Optional> createOptionalList () {
-        return new ArrayList<>();
-    }
-    
-    /**
-     * Creates empty <code>List&lt;Package&gt;</code> object.
-     * 
-     * @return the empty <code>List&lt;Package&gt;</code> created
-     */
-    public List<Package> createPackageList () {
-        return new ArrayList<>();
+        flagSync = false;
+        flagGetPrefs = false;
     }
 
     /**
-     * Creates empty <code>Package</code> object.
+     * Creates <code>Package</code> object and adds it to the internal list.
      * 
-     * @param optionals the new package's optional list
      * @param year the new package's year
      * @param semester the new package's semester
      * @param ID the new package's ID
      * @return the empty <code>Package</code> created
      */
-    public ro.uaic.info.optdist.internal.Package createPackage (List<Optional> optionals, int year, int semester, String ID) {
-        return new ro.uaic.info.optdist.internal.Package(optionals, year, semester, ID);
+    public boolean createPackage (int year, int semester, String ID) {
+        return this.packages.getPackageList().add(new ro.uaic.info.optdist.internal.Package(year, semester, ID));
     }
     
     /**
-     * Creates empty <code>Optional</code> object.
+     * Creates empty <code>Optional</code> object and adds it to the package
+     * with <code>packageID</code> as ID.
      * 
+     * @param packageID the id of the package to 
      * @param ID the new optional's ID
      * @param name the new optional's name
      * @param year the new optional's year
      * @param semester the new optional's semester
-     * @return the empty <code>Optional</code> created
+     * @return result of operation
      */
-    public Optional createOptional (String ID, String name, int year, int semester) {
-        return new Optional (ID, name, year, semester);
-    }
-    
-    public void addToOptionalList (List<Optional> list, Optional newOptional) {
-        list.add(newOptional);
-    }
-
-    public Optional getFromOptionalList (List<Optional> list, int index) {
-        return list.get(index);
+    public boolean createOptional (String packageID, String ID, String name, int year, int semester) {
+        return this.packages.getPackageByID(packageID).getOptionals().add(new Optional (ID, name, year, semester));
     }
     
     
