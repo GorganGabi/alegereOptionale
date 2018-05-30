@@ -70,6 +70,8 @@ public class OptDistService implements ScriptService {
     private String exportPath = "C:\\exportStudents.xlsx";
     
     private boolean hasInit = false;
+    private boolean hasSynced = false;
+    private boolean hasDistribed = false;
     
     public String test_student_creation () {
         this.test_student = new Student("192SL00777", "Vasile", "Vasilescu", "V3", 1.9f);
@@ -134,6 +136,7 @@ public class OptDistService implements ScriptService {
         distribution = new Distribution(students, algorithmDistribution);
         
         hasInit = true;
+        hasSynced = false;
     }
     
     /**
@@ -192,7 +195,6 @@ public class OptDistService implements ScriptService {
         
         return "Succes!";
     }
-
     
     /**
      * Validates a form containing the preferences of a student then
@@ -262,6 +264,121 @@ public class OptDistService implements ScriptService {
         submitterStudent.setPreference(submitterPreference);
         
         // TODO inserat in BD(?)
+        
+        return "Succes!";
+    }
+    
+    public String submitForm (String nrMatricol, List<String> packageIDs, List<List<String>> optionalIDs) {
+        if (Calendar.getInstance().after(forms.getTTL())) { // TODO verifica data
+            return "Esec! Perioada de submit a expirat.";
+        }
+        
+        if (packageIDs.size() != optionalIDs.size()) {
+            throw new IllegalArgumentException("Esec! packageIDs si optionalIDs nu sunt de aceeasi lungime!");
+        }
+        
+        
+        Student submitterStudent = this.students.getStudentByReg(nrMatricol);
+        
+        FormResponse submitterForm = new FormResponse();
+        submitterForm.setNrMatricol(nrMatricol);
+        
+        Map<ro.uaic.info.optdist.internal.Package, List<Optional>> submitterPrefs = new HashMap<>();
+        
+        ro.uaic.info.optdist.internal.Package currentPackage = null;
+        List<Optional> currentOptionalList = null;
+        Optional currentOptional = null;
+        
+        for (int iterPackage = 0; iterPackage < packageIDs.size(); iterPackage++) {
+            currentPackage = packages.getPackageByID(packageIDs.get(iterPackage));
+            
+            currentOptionalList = new ArrayList<>();
+            for (int iterOptionals = 0; iterOptionals < optionalIDs.size(); iterOptionals++) {
+                currentOptional = currentPackage.getOptionalByID(optionalIDs.get(iterPackage).get(iterOptionals));
+                
+                currentOptionalList.add(currentOptional);
+            }
+            
+            submitterPrefs.put(currentPackage, currentOptionalList);
+        }
+        
+        submitterForm.setPrefs(submitterPrefs);
+        
+        Preference submitterPreference = new Preference(submitterForm);
+        
+        submitterStudent.setPreference(submitterPreference);
+        
+        // TODO inserat in BD(?)
+        
+        return "Succes!";
+    }
+    
+    HashMap<String, HashMap<String, ArrayList<String>>> buffer;
+    
+    public String submitSinglePreference (String nrMatricol, String packageID, String optionalID, int priority) {
+        // TODO check if synced optionals
+        
+        String status = "";
+        
+        //get student with nrMatricol
+        Student currentStudent = students.getStudentByReg(nrMatricol);
+        if (currentStudent == null) {
+            status += "Esec: studentul nu a fost gasit";
+            return status;
+        }
+        
+        ro.uaic.info.optdist.internal.Package currentPackage = packages.getPackageByID(packageID);
+        if (currentPackage == null) {
+            status += "Esec: pachetul nu a fost gasit";
+            return status;
+        }
+        
+        Optional currentOptional = currentPackage.getOptionalByID(optionalID);
+        if (currentOptional == null) {
+            status += "Esec: optionalul nu a fost gasit";
+            return status;
+        }
+        
+        
+        if (buffer.get(nrMatricol) == null) {
+            buffer.put(nrMatricol, new HashMap<>());
+        }
+        
+        if (buffer.get(nrMatricol).get(packageID) == null) {
+            ArrayList<String> emptyOptList = new ArrayList<>();
+            
+            for (int i = 0; i < currentPackage.getOptionals().size(); i++) {
+                emptyOptList.add("");
+            }
+            
+            buffer.get(nrMatricol).put(packageID, emptyOptList);
+        }
+        
+        if (buffer.get(nrMatricol).get(packageID).get(priority).equals("")) {
+            status += "O preferinta a fost suprascrisa!\n";
+        }
+        
+        buffer.get(nrMatricol).get(packageID).set(priority, optionalID);
+
+        return status + "Succes!";
+    }
+    
+    public String submitSinglePreference (String nrMatricol, String packageID, String optionalID, String priority) {
+        return submitSinglePreference (nrMatricol, packageID, optionalID, Integer.parseInt(priority));
+    }
+    
+    public String flushPreferences () {
+        for (String nrMat : buffer.keySet()) {
+            List<String> packList = new ArrayList<>();
+            List<List<String>> optList = new ArrayList<>();
+            
+            for (String packID : buffer.get(nrMat).keySet()) {
+                packList.add(packID);
+                optList.add(buffer.get(nrMat).get(packID));
+            }
+            
+            submitForm(nrMat, packList, optList);
+        }
         
         return "Succes!";
     }
@@ -344,6 +461,8 @@ public class OptDistService implements ScriptService {
         this.algorithmDistribution = null;
         this.xcParser = null;
         hasInit = false;
+        hasSynced = false;
+        hasDistribed = false;
     }
     
     
