@@ -3,15 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OptDist;
+package ro.uaic.info.optdist.internal;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,24 +17,6 @@ import static org.junit.Assert.*;
  */
 public class FormInfoTest {
     
-    public FormInfoTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of getPackages method, of class FormInfo.
@@ -66,13 +44,15 @@ public class FormInfoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    @Test
     public void testTTL()
     {
         System.out.println("setTTL"); // vom verifica daca TTL > data_curenta
-        Calendar newTTL = GregorianCalendar.getInstance();
-        newTTL.set(1997,6,20); // 20-mai-1997 (numerotarea lunilor se face de la 0
-        FormInfo instance = new FormInfo(newTTL,null);
+        Calendar newTTL = Calendar.getInstance();
+        newTTL.set(1997,Calendar.MAY,20); // 20-mai-1997 (numerotarea lunilor se face de la 0
+        FormInfo instance = new FormInfo(null,null);
         fail("Invalid TTL");
+        System.out.println(newTTL+"aaaaaaaaaaaaaaaaaaaaaaaaa");
     }
     
 }
