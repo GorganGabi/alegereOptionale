@@ -20,6 +20,7 @@ import java.util.Map;
 public class Distribution implements DistributionInterface {
     StudentAdministration students;
     DistributionAlgorithm algorithm;
+    PackageAdministration packages;
     
     /** 
      * Stores the result of the matching algorithm. 
@@ -35,10 +36,11 @@ public class Distribution implements DistributionInterface {
      * 
      * @param newStudents Contains the students along with their preferences.
      */
-    public Distribution(StudentAdministration newStudents)
+    public Distribution(StudentAdministration newStudents, PackageAdministration pack)
     {
         this. result = new HashMap<>();
         this.students = newStudents;
+        this.packages = pack;
     }
     
     /**
@@ -72,7 +74,7 @@ public class Distribution implements DistributionInterface {
     @Override
     public void start()
     {
-        this.result = algorithm.match(students);
+        this.result = algorithm.match(students,packages);
     }
     
     /**
