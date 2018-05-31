@@ -35,25 +35,27 @@ public class PackageTest {
         expectedPackage.setOptionals(replacePackage.getOptionals());
         package1.replace(replacePackage);
         
-        /*assertEquals(expectedPackage.getYear(), package1.getYear());
+        assertEquals(expectedPackage.getYear(), package1.getYear());
         assertEquals(expectedPackage.getSemester(), package1.getSemester());
-        assertEquals(expectedPackage.getID(), package1.getID());*/
+        assertEquals(expectedPackage.getID(), package1.getID());
         assertEquals(expectedPackage.getOptionals(), replacePackage.getOptionals());
         
-        fail("The test case failed, the old package is not replaced with the new one");
+       // fail("The test case failed, the old package is not replaced with the new one");
     }
 
 
     @Test
-    public void GetName(){
+    public void GetID(){
+        optionals.add(o1); optionals.add(o2); 
         Package packagetest = new Package(optionals,1,2,"pachetul1");
-        assertTrue(packagetest.getName() == "pachetul1");
+        assertTrue(packagetest.getID() == "pachetul1");
     }
 
     @Test
     public void GetSemester(){
+        optionals.add(o1); optionals.add(o2); 
         Package packagetest = new Package(optionals,1,2,"pachetul1");
-        assertTrue(packagetest.getSemester() == 1);
+        assertTrue(packagetest.getSemester() == 2);
     }
 
     @Test
@@ -77,15 +79,9 @@ public class PackageTest {
     }
 
     @Test
-    public void SetName(){
-        Package packagetest = new Package(optionals,1,2,"pachetul1");
-        packagetest.setName("paachetul2");
-        assertTrue(packagetest.getName() == "pachetul2");
-    }
-
-    @Test
     public void SetID(){
-        Package packagetest = new Package(optionals,1,2,"pachetul1");
+        optionals.add(o1); optionals.add(o2); 
+        Package packagetest = new Package(optionals,1,2,null);
         packagetest.setID("123");
         assertTrue(packagetest.getID() == "123");
     }
