@@ -1,0 +1,113 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package test;
+import OptDist.Student;
+import OptDist.StudentAdministration;
+import java.util.ArrayList;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class StudentTest {
+     public StudentTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+    
+    @Test
+    //daca numele, prenumele, nrMatricol, grupa sunt nule, iar nota 0
+    public void testGetNrMatricol() {
+        System.out.println("getNrMatricol");
+        Student instance = new Student(null,null,null,null,0);
+        String expResult = null;
+        String result = instance.getNrMatricol();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    //daca in loc de nume se introduc cifre
+    @Test   
+    public void testGetName() {
+        System.out.println("getName");
+        Student instance = new Student("asaf","1234","df","fdv",10);
+        String expResult = null;
+        String result = instance.getName();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    //daca in loc de prenume se introduc spatii
+    @Test   
+    public void testGetSurname() {
+        System.out.println("getSurname");
+        Student instance = new Student("asaf","adca","  ","fdv",9);
+        String expResult = null;
+        String result = instance.getSurname();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    //daca in loc de un format de genul "A3" se introduce altceva
+    @Test
+    public void testGetGroup() {
+        System.out.println("getGroup");
+        Student instance = new Student("aaa","bfd","sdsd","AAAAAAAAAAAA",8);
+        String expResult = null;
+        String result = instance.getGroup();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    //daca nota este mai mare decat 10
+    @Test
+    public void testGetGrade() {
+        System.out.println("getGrade");
+        Student instance = new Student("aaa","bfd","sdsd","asd",15);
+        String expResult = null;
+        float result = instance.getGrade();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    //daca anul>3
+    @Test
+    public void testGetYear() {
+        System.out.println("getGrade");
+        int year = 5;
+        Student instance = new Student("aaa","bfd","sdsd","asd",8);
+        String expResult = null;
+        float result = instance.getYear();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    
+    //!!!! In clasa Student, year nu face parte din constructor
+}
