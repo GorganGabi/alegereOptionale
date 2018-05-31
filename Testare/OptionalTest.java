@@ -59,9 +59,9 @@ public class OptionalTest {
        assertEquals(expResult,result);
     }
     @Test
-      public void invalidSemesterTest2(){ //semestru<-1
+      public void invalidSemesterTest2(){ //semestru<=0
        System.out.println("getSemester");
-       Optional instance = new Optional ("2", "IC",2,-1);
+       Optional instance = new Optional ("2", "IC",2,0);
        String expResult = null;
        float result = instance.getSemester();
        assertEquals(expResult,result);
@@ -92,7 +92,7 @@ public class OptionalTest {
        assertEquals(expResult,result);
     }
      @Test
-      public void testInvaliName() { //Numele optionalului este null
+      public void testInvalidName() { //Numele optionalului este null
         System.out.println("getName");
         Optional instance = new Optional ("3"," ",1,2);
         String expResult = null;
@@ -101,9 +101,9 @@ public class OptionalTest {
        
        }
       @Test
-      public void testInvaliID() { //ID optionalului este null
+      public void testInvalidID() { //ID optionalului este null
         System.out.println("getID");
-        Optional instance = new Optional (null,"MCM",1,2);
+        Optional instance = new Optional (" ","MCM",1,2);
         String expResult = null;
         String result = instance.getID();
         assertTrue(expResult == result);
