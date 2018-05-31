@@ -1,105 +1,111 @@
-package OptDist;
+package ro.uaic.info.optdist.internal;
 
+import java.util.Calendar;
+import java.util.List;
+import org.junit.Test;
+import static org.junit.Assert.*;
 /**
  *
  * @author Madalina
+ * @update: Teodora
+ * 
  */
 
 
 public class OptionalTest {
-    
+    @Test
     public void testGetCapacity()
     {
-        Optional optional = new Optional("Matlab",2,2,100,15);
-        assertTrue(optional.GetCapacity()==100);
+        Optional optional = new Optional("1","Matlab",2,2);
+        optional.setCapacity(100);
+        assertTrue(optional.getCapacity()==100);
         
     }
+    @Test
      public void testGetYear()
     {
         Optional optional;
-        optional = new Optional("Matlab",2,2,100,15);
-        assertTrue(optional.GetYear()==2);
+        optional = new Optional("1", "Matlab",2,2);
+        assertTrue(optional.getYear()==2);
         
     }
-     
+    @Test
     public void testGetSemester()
     {
-        Optional optional = new Optional("Matlab",2,2,100,15);
-        assertTrue(optional.GetSemester()==2);
+        Optional optional = new Optional("1","Matlab",2,2);
+        assertTrue(optional.getSemester()==2);
         
     }
-      
+    @Test
     public void testGetName()
     {
-        Optional optional = new Optional("Matlab",2,2,100,15);
-        assertTrue("Matlab".equals(optional.GetName()));
+        Optional optional = new Optional("1","Matlab",2,2);
+        assertTrue("Matlab".equals(optional.getName()));
         
     }
-    
+    @Test
        public void testgetID()
     {
-        Optional optional = new Optional("Matlab",2,2,100,15);
-        assertTrue(optional.getID()== 15);
+        Optional optional = new Optional("1","Matlab",2,2);
+        assertTrue(optional.getID()== "1");
         
     }
-
-    private void invalidSemesterTest(){ //semestru>2
+    @Test
+    public void invalidSemesterTest(){ //semestru>2
        System.out.println("getSemester");
-       int semester=3;
-       Optional instance = new Optional ("IC",2,3,100,15);
+       Optional instance = new Optional ("2", "IC",2,3);
        String expResult = null;
-       float result = instance.GetSemester();
+       float result = instance.getSemester();
        assertEquals(expResult,result);
     }
-    
-      public void invalidSemesterTest2(){ //semestru<-1
+    @Test
+      public void invalidSemesterTest2(){ //semestru<=0
        System.out.println("getSemester");
-       int semester=-1;
-       Optional instance = new Optional ("IC",2,-1,100,15);
+       Optional instance = new Optional ("2", "IC",2,0);
        String expResult = null;
-       float result = instance.GetSemester();
+       float result = instance.getSemester();
        assertEquals(expResult,result);
     }
-      
+     @Test 
       public void invalidYearTest(){ //an>3
        System.out.println("getYear");
-       int year=4;
-       Optional instance = new Optional ("IC",4,2,100,15);
+       Optional instance = new Optional ("2","IC",4,2);
        String expResult = null;
-       float result = instance.GetYear();
+       float result = instance.getYear();
        assertEquals(expResult,result);
     }
-     
+    @Test 
      public void invalidYearTest2(){ //an<2
        System.out.println("getYear");
-       int year=1;
-       Optional instance = new Optional ("IC",1,2,100,15);
+       Optional instance = new Optional ("2", "IC",1,2);
        String expResult = null;
-       float result = instance.GetYear();
+       float result = instance.getYear();
        assertEquals(expResult,result);
     }
-    
+    @Test
      public void invalidCapacityTest2(){ //capacitate <1
        System.out.println("getCapicity");
-       int capacity=0;
-       Optional instance = new Optional ("IC",1,2,0,15);
+       Optional instance = new Optional ("2","IC",1,2);
+       instance.setCapacity(0);
        String expResult = null;
-       float result = instance.GetCapacity();
+       float result = instance.getCapacity();
        assertEquals(expResult,result);
     }
-      public void testInvaliName() { //Numele optionalului este null
+     @Test
+      public void testInvalidName() { //Numele optionalului este null
         System.out.println("getName");
-        Optional instance = new Optional (" ",1,2,0,15);
+        Optional instance = new Optional ("3"," ",1,2);
         String expResult = null;
-        String result = instance.GetName();
+        String result = instance.getName();
         assertEquals(expResult, result);
        
        }
-      public void testInvaliID() { //ID optionalului este null
+      @Test
+      public void testInvalidID() { //ID optionalului este null
         System.out.println("getID");
-        Optional instance = new Optional (" ",1,2,0,0);
-        int expResult = 0;
-        int result = instance.getID();
+        Optional instance = new Optional (" ","MCM",1,2);
+        String expResult = null;
+        String result = instance.getID();
         assertTrue(expResult == result);
       }
 

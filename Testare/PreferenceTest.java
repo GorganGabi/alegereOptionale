@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 /**
  *
  * @author Madalina
+ * @update: Teodora
  */
 public class PreferenceTest {
     
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
+    /*
+    *    Check if a form response returns a map between a student and the list of his preferences
+    *   
+    */
      @Test
      public void Test1() {
         List<Optional> optionale = new ArrayList<>();
@@ -32,11 +30,11 @@ public class PreferenceTest {
         Package pachet1 = new Package(optionale, 2, 1, "100"); 
         pref.put(pachet1, optionale);
         FormResponse f1 = new FormResponse("123AAA", pref);  
-        //Preference expPreference = new Preference();
-        //expPreference.setPreference(pref);
+
         Preference expPreference = new Preference(f1);
+        Preference actualPreference = new Preference(new FormResponse("123AAA", pref));
         
-        assertEquals(expPreference, expPreference.getPreference());
+        assertEquals(expPreference.getPreference(), actualPreference.getPreference());
         
      }
 }

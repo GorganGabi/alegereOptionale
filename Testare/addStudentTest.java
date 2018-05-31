@@ -5,13 +5,8 @@
  */
 
 
-import optdist.Student;
-import optdist.StudentAdministration;
-import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+package ro.uaic.info.optdist.internal;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -43,7 +38,7 @@ public class addStudentTest {
     @Test
     public void addStudentTestNrMatricolNotString() {
         StudentAdministration instance = new StudentAdministration();
-        Student s = new Student(2, "Radu", "Andrei", "A3", 10);
+        Student s = new Student("2", "Radu", "Andrei", "A3", 10);
         if (!(s.getNrMatricol() instanceof String))
         {
             fail("NrMatricol should be a string");
@@ -55,16 +50,16 @@ public class addStudentTest {
     public void addStudentTestNrMatricolNotStringAdaugat() {
         StudentAdministration instance = new StudentAdministration();
         StudentAdministration instance2 = new StudentAdministration();
-        Student s = new Student(2, "Radu", "Andrei", "A3", 10);
+        Student s = new Student("2", "Radu", "Andrei", "A3", 10);
         instance.addStudent(s);  
         assertEquals(instance, instance2); 
     }
     
-     //daca se introduce in lista de studenti un student cu prenume care nu este string
+     //daca se introduce in lista de studenti un student cu prenume care nu este cuvant
     @Test
     public void addStudentTestNumeNotString() {
         StudentAdministration instance = new StudentAdministration();
-        Student s = new Student("123AA5", 12, "Andrei", "A3", 10);
+        Student s = new Student("123AA5", "12", "Andrei", "A3", 10);
         if (!(s.getName() instanceof String))
         {
             fail("Name should be a string");
@@ -76,7 +71,7 @@ public class addStudentTest {
     public void addStudentTestNumeNotStringAdaugat() {
         StudentAdministration instance = new StudentAdministration();
         StudentAdministration instance2 = new StudentAdministration();
-        Student s = new Student("123AA5", 12, "Andrei", "A3", 10);
+        Student s = new Student("123AA5", "12", "Andrei", "A3", 10);
         instance.addStudent(s);  
         assertEquals(instance, instance2); 
     }
@@ -85,7 +80,7 @@ public class addStudentTest {
     @Test
     public void addStudentTestPrenumeNotString() {
         StudentAdministration instance = new StudentAdministration();
-        Student s = new Student("123AA5", "Radu", 123, "A3", 10); 
+        Student s = new Student("123AA5", "Radu", "123", "A3", 10); 
         if (!(s.getSurname() instanceof String))
         {
             fail("Surname should be a string");
@@ -97,7 +92,7 @@ public class addStudentTest {
     public void addStudentTestPrenumeNotStringAdaugat() {
         StudentAdministration instance = new StudentAdministration();
         StudentAdministration instance2 = new StudentAdministration();
-        Student s = new Student("123AA5", "Radu", 123, "A3", 10);
+        Student s = new Student("123AA5", "Radu", "123", "A3", 10);
         instance.addStudent(s);  
         assertEquals(instance, instance2); 
     }
@@ -106,7 +101,7 @@ public class addStudentTest {
     @Test
     public void addStudentTestGroupNotString() {
         StudentAdministration instance = new StudentAdministration();
-        Student s = new Student("123AA5", "Radu", "Andrei", 3, 10);  
+        Student s = new Student("123AA5", "Radu", "Andrei", "3", 10);  
         if (!(s.getGroup() instanceof String))
         {
             fail("Group should be a string");
@@ -118,12 +113,13 @@ public class addStudentTest {
     public void addStudentTestGroupNotStringAdaugat() {
         StudentAdministration instance = new StudentAdministration();
         StudentAdministration instance2 = new StudentAdministration();
-        Student s = new Student("123AA5", "Radu", "Andrei", 3, 10);
+        Student s = new Student("123AA5", "Radu", "Andrei", "3", 10);
         instance.addStudent(s);  
         assertEquals(instance, instance2); 
     }
     
       //daca se introduce in lista de studenti un student cu grade care nu este float
+    /*
     @Test
     public void addStudentTestGradeNotFloat() {
         StudentAdministration instance = new StudentAdministration();
@@ -132,7 +128,7 @@ public class addStudentTest {
         {
             fail("Grade should be a string");
         }
-    }
+    }*/
     
     //testul reuseste daca studentul cu grade!=float nu a fost adaugat 
     @Test
@@ -149,7 +145,7 @@ public class addStudentTest {
     public void addStudentTestGradeTooSmall() {
         StudentAdministration instance = new StudentAdministration();
         Student s = new Student("123BB6", "Radu", "Andrei", "A3", -1);  
-        if ((s.getGrade < 1))
+        if ((s.getGrade() < 1))
         {
             fail("Grade too small.");
         }
@@ -170,7 +166,7 @@ public class addStudentTest {
     public void addStudentTestGradeTooBig() {
         StudentAdministration instance = new StudentAdministration();
         Student s = new Student("123BB6", "Radu", "Andrei", "A3", 11);  
-        if ((s.getGrade > 1))
+        if ((s.getGrade() > 1))
         {
             fail("Grade too big.");
         }
@@ -191,7 +187,7 @@ public class addStudentTest {
     public void addStudentTestGroupNotInTheRequiredForm() {
         StudentAdministration instance = new StudentAdministration();
         Student s = new Student("123AA4", "Radu", "Andrei", "A*3", 8); 
-        String group = s.getGroupe();
+        String group = s.getGroup();
         if (group.length() != 2)
         {
             fail("Group does not have the required number of characters");

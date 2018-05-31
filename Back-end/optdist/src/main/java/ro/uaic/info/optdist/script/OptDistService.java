@@ -3,6 +3,7 @@ package ro.uaic.info.optdist.script;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,6 +18,7 @@ import ro.uaic.info.optdist.HelloWorld;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -459,6 +461,11 @@ public class OptDistService implements ScriptService {
         List<Optional> optionalsChosen;
         Workbook workbook;
         FileOutputStream fileOut;
+        String[] columns = { "NUME", "PRENUME", "NUMAR MATRICOL", "AN", "GRUPA", "MEDIE"};
+        String[] forbiddenCharacters = { ":", "/", "\\", "?", "*", "[", "]"};
+        DecimalFormat df2 = new DecimalFormat(".##");
+        String newName = "";
+        boolean badCharacterFound;
         
         optionalDistribution = new HashMap();
         
@@ -477,20 +484,54 @@ public class OptDistService implements ScriptService {
         }
         
         workbook = new XSSFWorkbook();
-        
+           
         for(Optional optional : optionalDistribution.keySet())
         {
             Sheet sheet;
-            if(optional.getName().contains(":"))
-                sheet = workbook.createSheet(optional.getName().split(":")[0]);
+            badCharacterFound = false;
+            
+            newName = "";
+            
+            for(int i = 0; i < forbiddenCharacters.length; i++)
+            {
+                if(optional.getName().contains(forbiddenCharacters[i]))
+                {
+                    String[] nameParts = optional.getName().split(forbiddenCharacters[i]);
+                    for(int j = 0; j < nameParts.length; j++)
+                        if(j != nameParts.length - 1)
+                            newName = newName + "-" + nameParts[j];
+                        else
+                            newName = newName + nameParts[j];
+                    badCharacterFound = true;
+                }
+            }
+            
+            if(badCharacterFound == true)
+                sheet = workbook.createSheet(newName);
             else
                 sheet = workbook.createSheet(optional.getName());
-            int rowNum = 0;
+            int rowNum = 1;
+            
+            Row headerRow = sheet.createRow(0);
+            for (int i = 0; i < columns.length; i++) 
+            {
+                Cell cell = headerRow.createCell(i);
+                cell.setCellValue(columns[i]);
+            }
+            
             for(Student student : optionalDistribution.get(optional))
             {
                 Row row = sheet.createRow(rowNum);
                 row.createCell(0).setCellValue(student.getName());
                 row.createCell(1).setCellValue(student.getSurname());
+                row.createCell(2).setCellValue(student.getNrMatricol());
+                row.createCell(3).setCellValue(student.getYear());
+                row.createCell(4).setCellValue(student.getGroup());
+                row.createCell(5).setCellValue(Double.parseDouble(df2.format(student.getGrade())));
+            }
+            
+            for (int i = 0; i < columns.length; i++) {
+                sheet.autoSizeColumn(i);
             }
         }
         

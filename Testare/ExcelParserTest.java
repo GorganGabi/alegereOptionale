@@ -33,7 +33,7 @@ public class ExcelParserTest {
     }
 
     @Test(expected = java.io.FileNotFoundException.class)
-    void parse_InvalidPath(){
+    void parseInvalidPath(){
     ExcelParser instance = new ExcelParser();
     String filePath = "wrong path";
     instance.parse(filePath);
