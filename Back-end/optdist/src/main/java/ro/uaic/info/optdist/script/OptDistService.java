@@ -451,8 +451,9 @@ public class OptDistService implements ScriptService {
     
     /**
      * Exports the distribution results in the predetermined format.
+     * @return status message
      */
-    public void exportDistribution () throws IOException {
+    public String exportDistribution () throws IOException {
         Map<Optional, List<Student>> optionalDistribution;
         List<Student> optionalStudents;
         List<Optional> optionalsChosen;
@@ -505,6 +506,8 @@ public class OptDistService implements ScriptService {
         } catch (IOException ex) {
             System.out.println("I/O Exception");
         }
+        
+        return "Succes!";
     }
 
 
@@ -586,5 +589,13 @@ public class OptDistService implements ScriptService {
     
     public Distribution getDistribution () {
         return this.distribution;
+    }
+    
+    public FormInfoAdministration getForms () {
+        return this.forms;
+    }
+    
+    public void setImplicitCapacity () {
+        this.packages.setImplicitCapacity(students);
     }
 }
