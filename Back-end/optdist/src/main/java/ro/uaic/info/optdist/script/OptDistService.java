@@ -135,7 +135,7 @@ public class OptDistService implements ScriptService {
         forms = new FormInfoAdministration(expiration);
         
         algorithmDistribution = new DistributionAlgorithm();
-        distribution = new Distribution(students, algorithmDistribution);
+        distribution = new Distribution(students, packages, algorithmDistribution);
         
         buffer = new HashMap<>();
         

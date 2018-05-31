@@ -50,11 +50,12 @@ public class Distribution implements DistributionInterface {
      * the distribution of the students.
      */
     
-    public Distribution(StudentAdministration newStudents, DistributionAlgorithm newAlgorithm)
+    public Distribution(StudentAdministration newStudents, PackageAdministration pack, DistributionAlgorithm newAlgorithm)
     {
         this. result = new HashMap<>();
         this.students = newStudents;
         this.algorithm = newAlgorithm;
+        this.packages = pack;
     }
     
     /**
